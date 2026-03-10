@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "mkdir -p public && rsync -a --delete img/ public/img/",
     "build": "tsc && vite build",
     "serve": "vite preview --port 3005",
     "start": "npm run serve",
