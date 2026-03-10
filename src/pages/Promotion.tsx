@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Benefit, Feature } from '@/types';
-import './Promotion.css';
 
 const Promotion: React.FC = () => {
   const handlePromotionPlanningClick = (): void => {
@@ -67,9 +66,9 @@ const Promotion: React.FC = () => {
   ];
 
   const SectionHeader: React.FC<{ title: string; description: string }> = ({ title, description }) => (
-    <div className="section-title promo-section-title">
-      <h2>{title}</h2>
-      <p>{description}</p>
+    <div className="mb-14 text-center">
+      <h2 className="mb-3 text-3xl font-bold text-[var(--color-primary)] md:text-4xl">{title}</h2>
+      <p className="mx-auto max-w-3xl text-base leading-7 text-[var(--color-typography-secondary)]">{description}</p>
     </div>
   );
 
@@ -80,25 +79,39 @@ const Promotion: React.FC = () => {
         <meta name="description" content="Optimize promotional strategy with data-driven insights" />
       </Helmet>
 
-      <main className="promotion-page">
-        <section className="promo-hero">
-          <div className="container">
+      <main>
+        <section
+          className="py-24 text-white md:py-28"
+          style={{
+            background:
+              'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-80) 55%, var(--color-secondary) 100%)'
+          }}
+        >
+          <div className="container max-w-[1240px]">
             <motion.div
-              className="promo-hero-content"
+              className="mx-auto max-w-4xl text-center"
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <h1>Pricing & Promotion Effectiveness</h1>
-              <p>
+              <h1 className="mb-4 text-4xl font-extrabold tracking-tight md:text-6xl">Pricing & Promotion Effectiveness</h1>
+              <p className="mx-auto mb-7 max-w-3xl text-lg leading-8 text-white/85">
                 Optimize promotion planning and pricing intelligence with a single, data-driven workflow designed
                 for enterprise retail teams.
               </p>
-              <div className="promo-hero-actions">
-                <button type="button" className="btn btn-light btn-lg" onClick={handlePromotionPlanningClick}>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <button
+                  type="button"
+                  className="rounded-xl border border-white bg-white px-6 py-3 text-base font-semibold text-[var(--color-primary)] shadow-sm transition hover:bg-[var(--color-secondary-20)]"
+                  onClick={handlePromotionPlanningClick}
+                >
                   Explore Promotion Planning
                 </button>
-                <button type="button" className="btn btn-outline-light btn-lg" onClick={handlePriceOptimizationClick}>
+                <button
+                  type="button"
+                  className="rounded-xl border border-white/50 bg-white/10 px-6 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/20"
+                  onClick={handlePriceOptimizationClick}
+                >
                   View Optimization Dashboard
                 </button>
               </div>
@@ -106,8 +119,8 @@ const Promotion: React.FC = () => {
           </div>
         </section>
 
-        <section className="section promo-overview">
-          <div className="container">
+        <section className="py-20 md:py-24">
+          <div className="container max-w-[1240px]">
             <div className="row align-items-center g-5">
               <motion.div
                 className="col-lg-6"
@@ -115,7 +128,11 @@ const Promotion: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <img src="/img/project-8.jpg" alt="Pricing and Promotion Analytics" className="promo-overview-image" />
+                <img
+                  src="/img/project-8.jpg"
+                  alt="Pricing and Promotion Analytics"
+                  className="max-h-[420px] w-full rounded-xl object-cover shadow-[0_12px_30px_rgba(49,37,28,0.12)]"
+                />
               </motion.div>
               <motion.div
                 className="col-lg-6"
@@ -127,7 +144,7 @@ const Promotion: React.FC = () => {
                   title="Overview"
                   description="Our Pricing & Promotion Effectiveness solution helps you plan, execute, and measure campaigns for higher ROI and stronger pricing decisions across categories."
                 />
-                <p className="promo-overview-text">
+                <p className="max-w-xl text-base leading-8 text-[var(--color-typography)]">
                   From campaign design to post-promotion analysis, teams can align pricing, promotional depth,
                   and customer response in one integrated analytics framework.
                 </p>
@@ -136,8 +153,8 @@ const Promotion: React.FC = () => {
           </div>
         </section>
 
-        <section className="section promo-features">
-          <div className="container">
+        <section className="bg-[var(--color-surface-bg)] py-20 md:py-24">
+          <div className="container max-w-[1240px]">
             <SectionHeader
               title="Key Features"
               description="Powerful capabilities for promotion optimization and pricing intelligence"
@@ -152,12 +169,12 @@ const Promotion: React.FC = () => {
                   transition={{ delay: index * 0.05 }}
                   viewport={{ once: true }}
                 >
-                  <article className="promo-feature-card h-100">
-                    <div className="promo-feature-icon">
+                  <article className="flex h-full flex-col gap-3 rounded-xl border border-[var(--color-primary-20)] bg-white p-7 shadow-[0_6px_16px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_14px_26px_rgba(15,23,42,0.12)]">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-primary-20)] text-xl text-[var(--color-primary)]">
                       <i className={`fas ${feature.icon}`}></i>
                     </div>
-                    <h3>{feature.title}</h3>
-                    <p>{feature.description}</p>
+                    <h3 className="m-0 text-lg font-bold text-[var(--color-primary)]">{feature.title}</h3>
+                    <p className="m-0 leading-7 text-[var(--color-typography-secondary)]">{feature.description}</p>
                   </article>
                 </motion.div>
               ))}
@@ -165,8 +182,8 @@ const Promotion: React.FC = () => {
           </div>
         </section>
 
-        <section className="section promo-benefits">
-          <div className="container">
+        <section className="py-20 md:py-24">
+          <div className="container max-w-[1240px]">
             <SectionHeader
               title="Benefits"
               description="How this solution creates measurable business impact"
@@ -181,13 +198,16 @@ const Promotion: React.FC = () => {
                   transition={{ delay: index * 0.06 }}
                   viewport={{ once: true }}
                 >
-                  <div className="promo-benefit-item">
-                    <span className="promo-benefit-check" aria-hidden="true">
+                  <div className="flex items-start gap-3 px-1 py-4">
+                    <span
+                      className="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-success-20)] text-xs text-[var(--color-success)]"
+                      aria-hidden="true"
+                    >
                       <i className="fas fa-check"></i>
                     </span>
                     <div>
-                      <h4>{benefit.title}</h4>
-                      <p>{benefit.description}</p>
+                      <h4 className="mb-1 text-lg font-bold text-[var(--color-primary)]">{benefit.title}</h4>
+                      <p className="m-0 leading-7 text-[var(--color-typography-secondary)]">{benefit.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -196,40 +216,59 @@ const Promotion: React.FC = () => {
           </div>
         </section>
 
-        <section className="section promo-tools">
-          <div className="container">
+        <section
+          className="py-20 md:py-24"
+          style={{ background: 'linear-gradient(180deg, #fff 0%, var(--color-secondary-20) 100%)' }}
+        >
+          <div className="container max-w-[1240px]">
             <SectionHeader
               title="Launch Pricing Tools Instantly"
               description="Jump directly into your planning and optimization dashboards from one place."
             />
             <div className="row g-4">
               <div className="col-lg-6">
-                <article className="promo-tool-card h-100">
-                  <div className="promo-tool-head">
-                    <div className="promo-tool-icon">
+                <article className="flex h-full flex-col rounded-xl border border-[var(--color-primary-20)] bg-white p-8 shadow-[0_8px_18px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-primary-20)] text-xl text-[var(--color-primary)]">
                       <i className="fas fa-chart-pie"></i>
                     </div>
-                    <span className="promo-tool-tag">Planning</span>
+                    <span className="rounded-full bg-[var(--color-primary-20)] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--color-primary-80)]">
+                      Planning
+                    </span>
                   </div>
-                  <h3>Promotion Planning Dashboard</h3>
-                  <p>Design, schedule, and monitor promotional events with complete campaign visibility.</p>
-                  <button type="button" className="btn promo-btn-primary" onClick={handlePromotionPlanningClick}>
+                  <h3 className="mb-2 text-2xl font-bold text-[var(--color-primary)]">Promotion Planning Dashboard</h3>
+                  <p className="mb-6 leading-7 text-[var(--color-typography-secondary)]">
+                    Design, schedule, and monitor promotional events with complete campaign visibility.
+                  </p>
+                  <button
+                    type="button"
+                    className="mt-auto w-fit rounded-lg bg-[var(--color-primary)] px-5 py-2.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-primary-80)]"
+                    onClick={handlePromotionPlanningClick}
+                  >
                     Open Dashboard
                   </button>
                 </article>
               </div>
 
               <div className="col-lg-6">
-                <article className="promo-tool-card h-100">
-                  <div className="promo-tool-head">
-                    <div className="promo-tool-icon promo-tool-icon-secondary">
+                <article className="flex h-full flex-col rounded-xl border border-[var(--color-primary-20)] bg-white p-8 shadow-[0_8px_18px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-secondary-20)] text-xl text-[var(--color-secondary)]">
                       <i className="fas fa-tag"></i>
                     </div>
-                    <span className="promo-tool-tag">Optimization</span>
+                    <span className="rounded-full bg-[var(--color-primary-20)] px-3 py-1 text-xs font-bold uppercase tracking-widest text-[var(--color-primary-80)]">
+                      Optimization
+                    </span>
                   </div>
-                  <h3>Price Optimization Dashboard</h3>
-                  <p>Analyze KVI pricing behavior and optimize strategy with advanced pricing insights.</p>
-                  <button type="button" className="btn promo-btn-primary" onClick={handlePriceOptimizationClick}>
+                  <h3 className="mb-2 text-2xl font-bold text-[var(--color-primary)]">Price Optimization Dashboard</h3>
+                  <p className="mb-6 leading-7 text-[var(--color-typography-secondary)]">
+                    Analyze KVI pricing behavior and optimize strategy with advanced pricing insights.
+                  </p>
+                  <button
+                    type="button"
+                    className="mt-auto w-fit rounded-lg bg-[var(--color-primary)] px-5 py-2.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-primary-80)]"
+                    onClick={handlePriceOptimizationClick}
+                  >
                     Open Dashboard
                   </button>
                 </article>
@@ -238,12 +277,20 @@ const Promotion: React.FC = () => {
           </div>
         </section>
 
-        <section className="promo-cta">
-          <div className="container">
-            <div className="promo-cta-content">
-              <h3>Ready to Get Started?</h3>
-              <p>Contact us today to learn how Promotion Optimization can accelerate your retail performance.</p>
-              <Link to="/contact" className="btn btn-light btn-lg">
+        <section
+          className="py-20 md:py-24"
+          style={{ background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-burgundy) 100%)' }}
+        >
+          <div className="container max-w-[1240px]">
+            <div className="mx-auto max-w-3xl text-center">
+              <h3 className="mb-3 text-4xl font-bold text-white">Ready to Get Started?</h3>
+              <p className="mb-6 text-lg text-white/85">
+                Contact us today to learn how Promotion Optimization can accelerate your retail performance.
+              </p>
+              <Link
+                to="/contact"
+                className="inline-flex rounded-xl bg-white px-6 py-3 text-base font-semibold text-[var(--color-primary)] transition hover:bg-[var(--color-secondary-20)]"
+              >
                 Contact Us
               </Link>
             </div>
