@@ -1,9 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { FeatureCard, Stat } from '@/types';
 import './Home.css';
+
+interface Metric extends Stat {
+  icon: string;
+  value: number;
+  suffix?: string;
+}
+
+interface PlatformCapability {
+  title: string;
+  description: string;
+}
+
+const MetricCard: React.FC<{ metric: Metric; delay: number }> = ({ metric, delay }) => {
+  const [current, setCurrent] = useState<number>(0);
+  const [started, setStarted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!started) {
+      return;
+    }
+
+    const duration = 1200;
+    const startTime = performance.now();
+    let rafId = 0;
+
+    const tick = (now: number): void => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCurrent(Math.floor(metric.value * eased));
+      if (progress < 1) {
+        rafId = window.requestAnimationFrame(tick);
+      }
+    };
+
+    rafId = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(rafId);
+  }, [started, metric.value]);
+
+  return (
+    <motion.div
+      className="col-xl-3 col-md-6"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay }}
+      viewport={{ once: true }}
+      onViewportEnter={() => setStarted(true)}
+    >
+      <article className="home-metric-card h-100">
+        <span className="home-metric-icon" aria-hidden="true">
+          <i className={`fas ${metric.icon}`}></i>
+        </span>
+        <h3>
+          {current}
+          {metric.suffix || ''}
+        </h3>
+        <p>{metric.label}</p>
+      </article>
+    </motion.div>
+  );
+};
 
 const Home: React.FC = () => {
   const features: FeatureCard[] = [
@@ -45,11 +105,34 @@ const Home: React.FC = () => {
     }
   ];
 
-  const stats: Stat[] = [
-    { number: '50+', label: 'Analytics Solutions' },
-    { number: '100K+', label: 'Data Points Analyzed' },
-    { number: '95%', label: 'Client Satisfaction' },
-    { number: '24/7', label: 'Support Available' }
+  const stats: Metric[] = [
+    { number: '50+', value: 50, suffix: '+', icon: 'fa-layer-group', label: 'Analytics Solutions' },
+    { number: '100K+', value: 100, suffix: 'K+', icon: 'fa-database', label: 'Data Points Processed' },
+    { number: '95%', value: 95, suffix: '%', icon: 'fa-chart-line', label: 'Client Satisfaction' },
+    { number: '24/7', value: 24, suffix: '/7', icon: 'fa-headset', label: 'Enterprise Support' }
+  ];
+
+  const capabilities: PlatformCapability[] = [
+    {
+      title: 'Promotion Optimization',
+      description: 'Model promotion uplift and margin impact before launch.'
+    },
+    {
+      title: 'Price Elasticity Analysis',
+      description: 'Measure demand sensitivity and optimize pricing decisions.'
+    },
+    {
+      title: 'Supplier Negotiation Intelligence',
+      description: 'Identify negotiation gaps and opportunities with live data.'
+    },
+    {
+      title: 'Customer Segmentation',
+      description: 'Build actionable segments based on behavior and value signals.'
+    },
+    {
+      title: 'Category Performance Analytics',
+      description: 'Track assortment, role, and productivity across categories.'
+    }
   ];
 
   return (
@@ -59,75 +142,66 @@ const Home: React.FC = () => {
         <meta name="description" content="Leading retail analytics platform providing AI-driven insights for business growth" />
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="hero">
+      <section className="home-hero">
         <div className="container">
-          <div className="row align-items-center">
-            <motion.div 
+          <div className="row align-items-center g-4">
+            <motion.div
               className="col-lg-6"
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
             >
-              <h1 className="display-4 fw-bold text-white mb-4">
-                Transform Your Retail Business with <span className="text-warning">AI-Powered Analytics</span>
+              <div className="home-hero-badge">Retail Intelligence Platform</div>
+              <h1>
+                Transform Your Retail Business with <span>AI-Powered Analytics</span>
               </h1>
-              <p className="lead text-white-50 mb-4">
-                RACE.AI delivers cutting-edge analytics solutions that empower retail businesses 
-                to make smarter decisions, optimize operations, and drive sustainable growth.
+              <p>
+                RACE.AI helps enterprise retail teams optimize pricing, promotions, and category strategy using
+                production-grade analytics and explainable AI insights.
               </p>
-              <div className="d-flex gap-3 flex-wrap">
-                <Link to="/services" className="btn btn-light btn-lg px-4">
-                  Explore Solutions <i className="fas fa-arrow-right ms-2"></i>
+              <div className="home-hero-actions">
+                <Link to="/services" className="btn home-btn-primary btn-lg">
+                  Explore Solutions
                 </Link>
-                <Link to="/contact" className="btn btn-outline-light btn-lg px-4">
-                  Get Started
+                <Link to="/race-gpt" className="btn home-btn-secondary btn-lg">
+                  View Platform
                 </Link>
               </div>
             </motion.div>
-            <motion.div 
-              className="col-lg-6 mt-5 mt-lg-0"
-              initial={{ opacity: 0, x: 50 }}
+
+            <motion.div
+              className="col-lg-6"
+              initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
             >
-              <img 
-                src="/img/hero_image1.jpg" 
-                alt="Analytics Dashboard" 
-                className="img-fluid rounded shadow-lg"
-              />
+              <div className="home-hero-visual">
+                <img src="/img/hero_image1.jpg" alt="RACE AI analytics platform dashboard" className="img-fluid" />
+                <div className="home-float-chip chip-one">
+                  <i className="fas fa-chart-bar"></i> Live Performance
+                </div>
+                <div className="home-float-chip chip-two">
+                  <i className="fas fa-bolt"></i> AI Recommendations
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="stats-section py-5 bg-light">
+      <section className="home-metrics section">
         <div className="container">
           <div className="row g-4">
-            {stats.map((stat, index) => (
-              <motion.div 
-                key={index}
-                className="col-lg-3 col-md-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="stat-card text-center p-4">
-                  <h2 className="display-4 fw-bold text-primary mb-2">{stat.number}</h2>
-                  <p className="text-secondary mb-0 fs-5">{stat.label}</p>
-                </div>
-              </motion.div>
+            {stats.map((metric, index) => (
+              <MetricCard key={metric.label} metric={metric} delay={index * 0.08} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="section">
+      <section className="section home-solutions">
         <div className="container">
-          <div className="section-title">
+          <div className="section-title home-section-title">
             <h2>Our Core Solutions</h2>
             <p>Comprehensive analytics solutions designed to address every aspect of retail excellence</p>
           </div>
@@ -142,18 +216,18 @@ const Home: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <Link to={feature.link} className="text-decoration-none">
-                  <div className="feature-card card h-100">
-                    <div className="card-body text-center">
-                      <div className="feature-icon mb-4">
-                        <i className={`fas ${feature.icon} fa-3x text-primary`}></i>
-                      </div>
-                      <h4 className="card-title mb-3">{feature.title}</h4>
-                      <p className="card-text text-secondary">{feature.description}</p>
-                      <span className="text-primary fw-bold">
+                  <article className="home-solution-card h-100">
+                    <div className="home-solution-icon">
+                      <i className={`fas ${feature.icon}`} aria-hidden="true"></i>
+                    </div>
+                    <div>
+                      <h3>{feature.title}</h3>
+                      <p>{feature.description}</p>
+                      <span className="home-inline-cta">
                         Learn More <i className="fas fa-arrow-right ms-2"></i>
                       </span>
                     </div>
-                  </div>
+                  </article>
                 </Link>
               </motion.div>
             ))}
@@ -161,76 +235,73 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="section bg-light">
+      <section className="section home-platform">
         <div className="container">
-          <div className="row align-items-center">
-            <motion.div 
+          <div className="section-title home-section-title">
+            <h2>Retail Intelligence Platform</h2>
+            <p>Built for enterprise teams that need fast, reliable, and actionable decision intelligence.</p>
+          </div>
+          <div className="row g-4">
+            {capabilities.map((capability, index) => (
+              <motion.div
+                key={capability.title}
+                className="col-lg col-md-6"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.06 }}
+                viewport={{ once: true }}
+              >
+                <article className="home-capability-card h-100">
+                  <h3>{capability.title}</h3>
+                  <p>{capability.description}</p>
+                </article>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section home-why">
+        <div className="container">
+          <div className="row align-items-center g-5">
+            <motion.div
               className="col-lg-6"
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <img 
-                src="/img/about_us1.jpg" 
-                alt="Why Choose RACE.AI" 
-                className="img-fluid rounded shadow"
-              />
+              <img src="/img/about_us1.jpg" alt="RACE AI product platform view" className="home-why-image img-fluid" />
             </motion.div>
-            <motion.div 
-              className="col-lg-6 mt-5 mt-lg-0"
-              initial={{ opacity: 0, x: 50 }}
+            <motion.div
+              className="col-lg-6"
+              initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="mb-4">Why Choose RACE.AI?</h2>
-              <div className="why-choose-list">
-                <div className="why-item mb-4">
-                  <div className="d-flex">
-                    <div className="icon-box me-3">
-                      <i className="fas fa-check-circle text-primary fa-2x"></i>
-                    </div>
-                    <div>
-                      <h5>Advanced AI Technology</h5>
-                      <p className="text-secondary">Leveraging cutting-edge AI and machine learning for accurate insights</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="why-item mb-4">
-                  <div className="d-flex">
-                    <div className="icon-box me-3">
-                      <i className="fas fa-check-circle text-primary fa-2x"></i>
-                    </div>
-                    <div>
-                      <h5>Industry Expertise</h5>
-                      <p className="text-secondary">Deep understanding of retail operations and challenges</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="why-item mb-4">
-                  <div className="d-flex">
-                    <div className="icon-box me-3">
-                      <i className="fas fa-check-circle text-primary fa-2x"></i>
-                    </div>
-                    <div>
-                      <h5>Actionable Insights</h5>
-                      <p className="text-secondary">Transform data into clear, actionable business strategies</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="why-item">
-                  <div className="d-flex">
-                    <div className="icon-box me-3">
-                      <i className="fas fa-check-circle text-primary fa-2x"></i>
-                    </div>
-                    <div>
-                      <h5>Proven Results</h5>
-                      <p className="text-secondary">Track record of driving measurable business improvements</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="section-title home-section-title text-start">
+                <h2>Why Choose RACE.AI</h2>
+                <p>Enterprise-grade product design and retail domain intelligence built into every workflow.</p>
               </div>
-              <Link to="/about" className="btn btn-primary mt-4">
+
+              <div className="home-why-list">
+                {[
+                  'Advanced AI Technology',
+                  'Industry Expertise',
+                  'Actionable Insights',
+                  'Proven Results'
+                ].map((item) => (
+                  <div className="home-why-item" key={item}>
+                    <span className="home-why-icon" aria-hidden="true">
+                      <i className="fas fa-check"></i>
+                    </span>
+                    <div>
+                      <h4>{item}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <Link to="/about" className="btn home-btn-primary mt-4">
                 Learn More About Us
               </Link>
             </motion.div>
@@ -238,19 +309,19 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="cta-section py-5" style={{background: 'linear-gradient(135deg, var(--primary) 0%, #0085d6 100%)'}}>
+      <section className="home-cta">
         <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-8">
-              <h2 className="text-white mb-3">Ready to Transform Your Retail Analytics?</h2>
-              <p className="text-white-50 mb-0 fs-5">
-                Join leading retailers who trust RACE.AI for their analytics needs
-              </p>
-            </div>
-            <div className="col-lg-4 text-lg-end mt-4 mt-lg-0">
-              <Link to="/contact" className="btn btn-light btn-lg px-4">
-                Contact Us Today
+          <div className="home-cta-content">
+            <h2>Ready to Transform Your Retail Analytics?</h2>
+            <p>
+              Join leading retailers using RACE.AI to optimize pricing, promotions, and operations.
+            </p>
+            <div className="home-cta-actions">
+              <Link to="/contact" className="btn btn-light btn-lg">
+                Contact Us
+              </Link>
+              <Link to="/contact" className="btn btn-outline-light btn-lg">
+                Request Demo
               </Link>
             </div>
           </div>
