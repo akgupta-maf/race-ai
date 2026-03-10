@@ -1,4 +1,7 @@
-/* Main CSS - Professional React Application */
+/* Tailwind CSS */
+@import "tailwindcss";
+
+/* Custom CSS - Professional React Application */
 
 :root {
   --color-primary: rgb(49, 37, 28);

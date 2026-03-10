@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface Feature {
   icon: string;
   title: string;
@@ -47,4 +49,5 @@ export interface PageTemplateProps {
   image?: string;
   features?: Feature[];
   benefits?: Benefit[];
+  children?: ReactNode;
 }

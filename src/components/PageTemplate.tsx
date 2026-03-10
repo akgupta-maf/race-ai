@@ -9,7 +9,8 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
   description, 
   image, 
   features, 
-  benefits 
+  benefits,
+  children
 }) => {
   return (
     <>
@@ -131,6 +132,8 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
           </div>
         </section>
       )}
+
+      {children}
 
       {/* CTA */}
       <section className="py-5" style={{background: 'linear-gradient(135deg, var(--primary) 0%, #0085d6 100%)'}}>
