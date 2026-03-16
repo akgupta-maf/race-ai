@@ -1,0 +1,347 @@
+/* ─── Promotion Page Styles ─────────────────────────────── */
+
+/* ── Hero ─────────────────────────────────────────────── */
+.promo-hero {
+  padding: 7rem 0;
+  background: linear-gradient(
+    135deg,
+    rgb(49, 37, 28) 0%,
+    rgb(90, 81, 73) 60%,
+    rgb(180, 151, 90) 100%
+  );
+  color: #fff;
+}
+
+.promo-hero-content {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.promo-hero-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .promo-hero-content h1 {
+    font-size: 2rem;
+  }
+}
+
+.promo-hero-content > p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 600px;
+  margin: 0 auto 2.25rem;
+}
+
+.promo-eyebrow {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.3rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.promo-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* ── Buttons ──────────────────────────────────────────── */
+.promo-btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.6rem;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  color: rgb(49, 37, 28);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.promo-btn-white:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  color: rgb(49, 37, 28);
+  text-decoration: none;
+}
+
+.promo-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.6rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.promo-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.promo-btn-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  background: rgb(49, 37, 28);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  width: fit-content;
+}
+
+.promo-btn-cta:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* ── Sections ─────────────────────────────────────────── */
+.promo-section {
+  padding: 5rem 0;
+}
+
+.promo-bg-surface {
+  background-color: rgb(241, 245, 249);
+}
+
+.promo-section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.promo-label-secondary {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(180, 151, 90);
+}
+
+.promo-section-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgb(49, 37, 28);
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .promo-section-heading {
+    font-size: 1.6rem;
+  }
+}
+
+/* ── Overview ─────────────────────────────────────────── */
+.promo-overview-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(49, 37, 28, 0.13);
+}
+
+.promo-body-text {
+  color: rgb(100, 116, 139);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+  font-size: 0.975rem;
+}
+
+/* ── Feature Cards ────────────────────────────────────── */
+.promo-feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.promo-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+}
+
+/* ── Benefit Cards ────────────────────────────────────── */
+.promo-benefit-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+/* ── Icon Boxes ───────────────────────────────────────── */
+.promo-icon-box {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: 1.05rem;
+}
+
+.promo-icon-primary {
+  background: rgb(214, 211, 210);
+  color: rgb(49, 37, 28);
+}
+
+.promo-icon-success {
+  background: rgb(226, 237, 215);
+  color: rgb(108, 164, 57);
+}
+
+/* ── Card Typography ──────────────────────────────────── */
+.promo-card-title {
+  font-size: 0.975rem;
+  font-weight: 700;
+  color: rgb(49, 37, 28);
+  margin-bottom: 0.35rem;
+}
+
+.promo-card-text {
+  font-size: 0.875rem;
+  color: rgb(100, 116, 139);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ── Dashboard Cards ──────────────────────────────────── */
+.promo-dashboard-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.07);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.promo-dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.11);
+}
+
+.promo-dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.promo-dashboard-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.25rem;
+}
+
+.promo-dashboard-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.promo-dashboard-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: rgb(49, 37, 28);
+  margin-bottom: 0.6rem;
+}
+
+/* Accent variants */
+.promo-accent-primary .promo-dashboard-icon {
+  background: rgb(214, 211, 210);
+  color: rgb(49, 37, 28);
+}
+
+.promo-accent-primary .promo-dashboard-badge {
+  background: rgb(214, 211, 210);
+  color: rgb(49, 37, 28);
+}
+
+.promo-accent-secondary .promo-dashboard-icon {
+  background: rgb(240, 234, 222);
+  color: rgb(180, 151, 90);
+}
+
+.promo-accent-secondary .promo-dashboard-badge {
+  background: rgb(240, 234, 222);
+  color: rgb(180, 151, 90);
+}
+
+/* ── CTA Section ──────────────────────────────────────── */
+.promo-cta-section {
+  padding: 5rem 0;
+  background: linear-gradient(
+    135deg,
+    rgb(49, 37, 28) 0%,
+    rgb(138, 21, 56) 100%
+  );
+}
+
+.promo-cta-content {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.promo-cta-content h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.promo-cta-content > p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
