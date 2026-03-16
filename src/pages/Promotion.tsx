@@ -72,8 +72,11 @@ const dashboards = [
     cta: "Open Dashboard",
     accentClass: "promo-accent-primary",
     onClick: () => {
-      window.location.href =
-        "https://pnp.retailsso.com/promotions/dashboards/main";
+      window.open(
+        "https://pnp.retailsso.com/promotions/dashboards/main",
+        "_blank",
+        "noopener,noreferrer"
+      );
     },
   },
   {
@@ -85,8 +88,11 @@ const dashboards = [
     cta: "Open Dashboard",
     accentClass: "promo-accent-secondary",
     onClick: () => {
-      window.location.href =
-        "https://pnp.mafcarrefour.local/pricing/dashboard/pricing-kvi";
+      window.open(
+        "https://pnp.mafcarrefour.local/pricing/dashboard/pricing-kvi",
+        "_blank",
+        "noopener,noreferrer"
+      );
     },
   },
 ];
