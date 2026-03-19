@@ -224,7 +224,7 @@ const Home: React.FC = () => {
             >
               <div className='home-hero-visual'>
                 <img
-                  src={assetPath('/img/hero_image1.jpg')}
+                  src={assetPath('/img/home_banner_2.png')}
                   alt='RACE AI analytics platform dashboard'
                   className='h-auto w-full'
                 />
@@ -335,7 +335,7 @@ const Home: React.FC = () => {
               viewport={{ once: true }}
             >
               <img
-                src={assetPath('/img/about_us1.jpg')}
+                src={assetPath('/img/why_race.png')}
                 alt='RACE AI product platform view'
                 className='home-why-image h-auto w-full'
               />
