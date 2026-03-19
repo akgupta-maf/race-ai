@@ -82,7 +82,7 @@ const Services: React.FC = () => {
             <h1 className='mb-3 text-4xl font-bold md:text-5xl'>
               Our Expertise
             </h1>
-            <p className='mx-auto max-w-3xl text-lg text-white/90'>
+            <p className='mx-auto max-w-3xl text-lg text-white'>
               Comprehensive Analytics Solutions for Every Retail Need
             </p>
           </motion.div>

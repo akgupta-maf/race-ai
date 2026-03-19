@@ -31,9 +31,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
           >
             <h1 className='mb-3 text-4xl font-bold md:text-5xl'>{title}</h1>
             {subtitle && (
-              <p className='mx-auto max-w-3xl text-lg text-white/90'>
-                {subtitle}
-              </p>
+              <p className='mx-auto max-w-3xl text-lg text-white'>{subtitle}</p>
             )}
           </motion.div>
         </div>
