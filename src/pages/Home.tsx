@@ -179,7 +179,7 @@ const Home: React.FC = () => {
         />
       </Helmet>
 
-      <section className='home-hero'>
+      <section className='home-hero  flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='grid items-center gap-6 lg:grid-cols-2'>
             <motion.div
@@ -240,7 +240,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className='home-metrics section'>
+      <section className='home-metrics section flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='grid gap-6 md:grid-cols-2 xl:grid-cols-4'>
             {stats.map((metric, index) => (
@@ -254,7 +254,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className='section home-solutions'>
+      <section className='section home-solutions flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='section-title home-section-title'>
             <h2>Our Core Solutions</h2>
@@ -296,7 +296,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className='section home-platform'>
+      <section className='section home-platform  flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='section-title home-section-title'>
             <h2>Retail Intelligence Platform</h2>
@@ -325,7 +325,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className='section home-why'>
+      <section className='section home-why flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='grid items-center gap-10 lg:grid-cols-2'>
             <motion.div
@@ -383,7 +383,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className='home-cta'>
+      <section className='home-cta flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='home-cta-content'>
             <h2>Ready to Transform Your Retail Analytics?</h2>

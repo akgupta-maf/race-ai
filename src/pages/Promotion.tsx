@@ -1,43 +1,59 @@
-import { assetPath } from "@/utils/assetPath";
-import { motion } from "framer-motion";
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import "./Promotion.css";
+import { assetPath } from '@/utils/assetPath';
+import { motion } from 'framer-motion';
+import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import './Promotion.css';
 
-/* ─── data ─────────────────────────────────────────────── */
-const features = [
-  {
-    icon: "fa-percent",
-    title: "Promotion Planning",
-    description: "Plan and schedule promotions for maximum impact.",
-  },
-  {
-    icon: "fa-chart-bar",
-    title: "Effectiveness Measurement",
-    description: "Measure ROI and effectiveness of each campaign.",
-  },
-  {
-    icon: "fa-money-bill-wave",
-    title: "Price Optimization",
-    description: "Optimize pricing strategies across categories.",
-  },
-  {
-    icon: "fa-users",
-    title: "Customer Response",
-    description: "Analyze how customers respond to different offers.",
-  },
-  {
-    icon: "fa-lightbulb",
-    title: "Recommendation Engine",
-    description: "AI-powered suggestions for your next promotion.",
-  },
-  {
-    icon: "fa-history",
-    title: "Historical Analysis",
-    description: "Learn from past promotion performance trends.",
-  },
-];
+type Benefit = {
+  title: string;
+  description: string;
+};
+
+const Promotion: React.FC = () => {
+  const handlePromotionPlanningClick = (): void => {
+    window.location.href =
+      'https://pnp.retailsso.com/promotions/dashboards/main';
+  };
+
+  const handlePriceOptimizationClick = (): void => {
+    window.location.href =
+      'https://pnp.mafcarrefour.local/pricing/dashboard/pricing-kvi';
+  };
+
+  /* ─── data ─────────────────────────────────────────────── */
+  const features = [
+    {
+      icon: 'fa-percent',
+      title: 'Promotion Planning',
+      description: 'Plan and schedule promotions for maximum impact.',
+    },
+    {
+      icon: 'fa-chart-bar',
+      title: 'Effectiveness Measurement',
+      description: 'Measure ROI and effectiveness of each campaign.',
+    },
+    {
+      icon: 'fa-money-bill-wave',
+      title: 'Price Optimization',
+      description: 'Optimize pricing strategies across categories.',
+    },
+    {
+      icon: 'fa-users',
+      title: 'Customer Response',
+      description: 'Analyze how customers respond to different offers.',
+    },
+    {
+      icon: 'fa-lightbulb',
+      title: 'Recommendation Engine',
+      description: 'AI-powered suggestions for your next promotion.',
+    },
+    {
+      icon: 'fa-history',
+      title: 'Historical Analysis',
+      description: 'Learn from past promotion performance trends.',
+    },
+  ];
 
   const benefits: Benefit[] = [
     {
@@ -266,7 +282,7 @@ const features = [
                     className='mt-auto w-fit rounded-lg bg-(--color-primary) px-5 py-2.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-(--color-primary-80)'
                     onClick={handlePromotionPlanningClick}
                   >
-                    {d.cta} &rarr;
+                    Open Dashboard
                   </button>
                 </article>
               </div>
