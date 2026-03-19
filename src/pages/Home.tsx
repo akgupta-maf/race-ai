@@ -48,14 +48,14 @@ const MetricCard: React.FC<{ metric: Metric; delay: number }> = ({
 
   return (
     <motion.div
-      className='col-xl-3 col-md-6'
+      className='w-full'
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay }}
       viewport={{ once: true }}
       onViewportEnter={() => setStarted(true)}
     >
-      <article className='home-metric-card h-100'>
+      <article className='home-metric-card h-full'>
         <span className='home-metric-icon' aria-hidden='true'>
           <i className={`fas ${metric.icon}`}></i>
         </span>
@@ -180,10 +180,10 @@ const Home: React.FC = () => {
       </Helmet>
 
       <section className='home-hero'>
-        <div className='container'>
-          <div className='row align-items-center g-4'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='grid items-center gap-6 lg:grid-cols-2'>
             <motion.div
-              className='col-lg-6'
+              className='w-full'
               initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -201,17 +201,23 @@ const Home: React.FC = () => {
                 analytics and explainable AI insights.
               </p>
               <div className='home-hero-actions'>
-                <Link to='/services' className='btn home-btn-primary btn-lg'>
+                <Link
+                  to='/services'
+                  className='home-btn-primary inline-flex items-center justify-center text-base no-underline'
+                >
                   Explore Solutions
                 </Link>
-                <Link to='/race-gpt' className='btn home-btn-secondary btn-lg'>
+                <Link
+                  to='/race-gpt'
+                  className='home-btn-secondary inline-flex items-center justify-center text-base no-underline'
+                >
                   View Platform
                 </Link>
               </div>
             </motion.div>
 
             <motion.div
-              className='col-lg-6'
+              className='w-full'
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
@@ -220,7 +226,7 @@ const Home: React.FC = () => {
                 <img
                   src={assetPath('/img/hero_image1.jpg')}
                   alt='RACE AI analytics platform dashboard'
-                  className='img-fluid'
+                  className='h-auto w-full'
                 />
                 <div className='home-float-chip chip-one'>
                   <i className='fas fa-chart-bar'></i> Live Performance
@@ -235,8 +241,8 @@ const Home: React.FC = () => {
       </section>
 
       <section className='home-metrics section'>
-        <div className='container'>
-          <div className='row g-4'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='grid gap-6 md:grid-cols-2 xl:grid-cols-4'>
             {stats.map((metric, index) => (
               <MetricCard
                 key={metric.label}
@@ -249,7 +255,7 @@ const Home: React.FC = () => {
       </section>
 
       <section className='section home-solutions'>
-        <div className='container'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='section-title home-section-title'>
             <h2>Our Core Solutions</h2>
             <p>
@@ -257,18 +263,18 @@ const Home: React.FC = () => {
               of retail excellence
             </p>
           </div>
-          <div className='row g-4'>
+          <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className='col-lg-4 col-md-6'
+                className='w-full'
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Link to={feature.link} className='text-decoration-none'>
-                  <article className='home-solution-card h-100'>
+                <Link to={feature.link} className='no-underline'>
+                  <article className='home-solution-card h-full'>
                     <div className='home-solution-icon'>
                       <i
                         className={`fas ${feature.icon}`}
@@ -279,7 +285,7 @@ const Home: React.FC = () => {
                       <h3>{feature.title}</h3>
                       <p>{feature.description}</p>
                       <span className='home-inline-cta'>
-                        Learn More <i className='fas fa-arrow-right ms-2'></i>
+                        Learn More <i className='fas fa-arrow-right ml-2'></i>
                       </span>
                     </div>
                   </article>
@@ -291,7 +297,7 @@ const Home: React.FC = () => {
       </section>
 
       <section className='section home-platform'>
-        <div className='container'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='section-title home-section-title'>
             <h2>Retail Intelligence Platform</h2>
             <p>
@@ -299,17 +305,17 @@ const Home: React.FC = () => {
               actionable decision intelligence.
             </p>
           </div>
-          <div className='row g-4'>
+          <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-5'>
             {capabilities.map((capability, index) => (
               <motion.div
                 key={capability.title}
-                className='col-lg col-md-6'
+                className='w-full'
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.06 }}
                 viewport={{ once: true }}
               >
-                <article className='home-capability-card h-100'>
+                <article className='home-capability-card h-full'>
                   <h3>{capability.title}</h3>
                   <p>{capability.description}</p>
                 </article>
@@ -320,10 +326,10 @@ const Home: React.FC = () => {
       </section>
 
       <section className='section home-why'>
-        <div className='container'>
-          <div className='row align-items-center g-5'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='grid items-center gap-10 lg:grid-cols-2'>
             <motion.div
-              className='col-lg-6'
+              className='w-full'
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -331,16 +337,16 @@ const Home: React.FC = () => {
               <img
                 src={assetPath('/img/about_us1.jpg')}
                 alt='RACE AI product platform view'
-                className='home-why-image img-fluid'
+                className='home-why-image h-auto w-full'
               />
             </motion.div>
             <motion.div
-              className='col-lg-6'
+              className='w-full'
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className='section-title home-section-title text-start'>
+              <div className='section-title home-section-title text-left'>
                 <h2>Why Choose RACE.AI</h2>
                 <p>
                   Enterprise-grade product design and retail domain intelligence
@@ -366,7 +372,10 @@ const Home: React.FC = () => {
                 ))}
               </div>
 
-              <Link to='/about' className='btn home-btn-primary mt-4'>
+              <Link
+                to='/about'
+                className='home-btn-primary mt-4 inline-flex items-center justify-center no-underline'
+              >
                 Learn More About Us
               </Link>
             </motion.div>
@@ -375,7 +384,7 @@ const Home: React.FC = () => {
       </section>
 
       <section className='home-cta'>
-        <div className='container'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='home-cta-content'>
             <h2>Ready to Transform Your Retail Analytics?</h2>
             <p>
@@ -383,10 +392,16 @@ const Home: React.FC = () => {
               promotions, and operations.
             </p>
             <div className='home-cta-actions'>
-              <Link to='/contact' className='btn btn-light btn-lg'>
+              <Link
+                to='/contact'
+                className='inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 font-semibold text-(--color-primary) transition hover:bg-(--color-secondary-20)'
+              >
                 Contact Us
               </Link>
-              <Link to='/contact' className='btn btn-outline-light btn-lg'>
+              <Link
+                to='/contact'
+                className='inline-flex items-center justify-center rounded-xl border border-white/60 px-6 py-3 font-semibold text-white transition hover:bg-white/20'
+              >
                 Request Demo
               </Link>
             </div>

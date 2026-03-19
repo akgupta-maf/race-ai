@@ -72,15 +72,17 @@ const Services: React.FC = () => {
       </Helmet>
 
       {/* Page Header */}
-      <section className='hero py-5'>
-        <div className='container'>
+      <section className='hero py-16'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <motion.div
             className='text-center text-white'
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className='display-4 fw-bold mb-3'>Our Expertise</h1>
-            <p className='lead'>
+            <h1 className='mb-3 text-4xl font-bold md:text-5xl'>
+              Our Expertise
+            </h1>
+            <p className='mx-auto max-w-3xl text-lg text-white/90'>
               Comprehensive Analytics Solutions for Every Retail Need
             </p>
           </motion.div>
@@ -89,42 +91,44 @@ const Services: React.FC = () => {
 
       {/* Services Grid */}
       <section className='section'>
-        <div className='container'>
-          <div className='row g-4'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className='col-lg-4 col-md-6'
+                className='w-full'
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className='card h-100'>
+                <div className='h-full overflow-hidden rounded-xl border border-(--color-primary-20) bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md'>
                   <img
                     src={assetPath(service.image)}
-                    className='card-img-top'
+                    className='h-56 w-full object-cover'
                     alt={service.category}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.src = assetPath('/img/project-1.jpg');
                     }}
                   />
-                  <div className='card-body'>
+                  <div className='p-6'>
                     <div className='mb-3'>
                       <i
-                        className={`fas ${service.icon} fa-2x text-primary`}
+                        className={`fas ${service.icon} text-3xl text-(--color-primary)`}
                       ></i>
                     </div>
-                    <h4 className='card-title mb-3'>{service.category}</h4>
-                    <ul className='list-unstyled'>
+                    <h4 className='mb-3 text-xl font-semibold text-(--color-primary)'>
+                      {service.category}
+                    </h4>
+                    <ul className='list-none space-y-2 pl-0'>
                       {service.items.map((item, idx) => (
                         <li key={idx} className='mb-2'>
                           <Link
                             to={item.link}
-                            className='text-decoration-none text-secondary hover-primary'
+                            className='text-(--color-typography-secondary) transition hover:text-(--color-primary)'
                           >
-                            <i className='fas fa-angle-right text-primary me-2'></i>
+                            <i className='fas fa-angle-right mr-2 text-(--color-primary)'></i>
                             {item.name}
                           </Link>
                         </li>
@@ -140,51 +144,51 @@ const Services: React.FC = () => {
 
       {/* Why Choose Our Services */}
       <section className='section bg-light'>
-        <div className='container'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='section-title'>
             <h2>Why Choose Our Services</h2>
             <p>What sets our analytics solutions apart</p>
           </div>
-          <div className='row g-4'>
-            <div className='col-lg-3 col-md-6'>
-              <div className='card text-center h-100'>
-                <div className='card-body'>
-                  <i className='fas fa-brain fa-3x text-primary mb-3'></i>
+          <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-4'>
+            <div>
+              <div className='h-full rounded-xl border border-(--color-primary-20) bg-white p-6 text-center shadow-sm'>
+                <div>
+                  <i className='fas fa-brain mb-3 text-5xl text-(--color-primary)'></i>
                   <h5>AI-Powered</h5>
-                  <p className='text-secondary small'>
+                  <p className='text-sm text-(--color-typography-secondary)'>
                     Advanced machine learning algorithms
                   </p>
                 </div>
               </div>
             </div>
-            <div className='col-lg-3 col-md-6'>
-              <div className='card text-center h-100'>
-                <div className='card-body'>
-                  <i className='fas fa-bolt fa-3x text-primary mb-3'></i>
+            <div>
+              <div className='h-full rounded-xl border border-(--color-primary-20) bg-white p-6 text-center shadow-sm'>
+                <div>
+                  <i className='fas fa-bolt mb-3 text-5xl text-(--color-primary)'></i>
                   <h5>Real-Time</h5>
-                  <p className='text-secondary small'>
+                  <p className='text-sm text-(--color-typography-secondary)'>
                     Instant insights when you need them
                   </p>
                 </div>
               </div>
             </div>
-            <div className='col-lg-3 col-md-6'>
-              <div className='card text-center h-100'>
-                <div className='card-body'>
-                  <i className='fas fa-cogs fa-3x text-primary mb-3'></i>
+            <div>
+              <div className='h-full rounded-xl border border-(--color-primary-20) bg-white p-6 text-center shadow-sm'>
+                <div>
+                  <i className='fas fa-cogs mb-3 text-5xl text-(--color-primary)'></i>
                   <h5>Customizable</h5>
-                  <p className='text-secondary small'>
+                  <p className='text-sm text-(--color-typography-secondary)'>
                     Tailored to your specific needs
                   </p>
                 </div>
               </div>
             </div>
-            <div className='col-lg-3 col-md-6'>
-              <div className='card text-center h-100'>
-                <div className='card-body'>
-                  <i className='fas fa-shield-alt fa-3x text-primary mb-3'></i>
+            <div>
+              <div className='h-full rounded-xl border border-(--color-primary-20) bg-white p-6 text-center shadow-sm'>
+                <div>
+                  <i className='fas fa-shield-alt mb-3 text-5xl text-(--color-primary)'></i>
                   <h5>Secure</h5>
-                  <p className='text-secondary small'>
+                  <p className='text-sm text-(--color-typography-secondary)'>
                     Enterprise-grade security standards
                   </p>
                 </div>

@@ -27,15 +27,15 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <div className="error-boundary">
-          <div className="error-content">
-            <i className="fas fa-exclamation-triangle fa-4x text-warning mb-4"></i>
+        <div className='error-boundary'>
+          <div className='error-content'>
+            <i className='fas fa-exclamation-triangle mb-4 text-6xl text-(--color-warning)'></i>
             <h1>Oops! Something went wrong</h1>
-            <p className="text-secondary">
+            <p className='text-(--color-typography-secondary)'>
               We're sorry for the inconvenience. Please try refreshing the page.
             </p>
-            <button 
-              className="btn btn-primary mt-3"
+            <button
+              className='mt-3 inline-flex rounded-xl bg-(--color-primary) px-5 py-2.5 font-semibold text-white transition hover:bg-(--color-primary-80)'
               onClick={() => window.location.reload()}
             >
               Refresh Page

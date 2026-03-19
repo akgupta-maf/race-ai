@@ -3,6 +3,7 @@ import { assetPath } from '@/utils/assetPath';
 import { motion } from 'framer-motion';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const PageTemplate: React.FC<PageTemplateProps> = ({
   title,
@@ -21,32 +22,36 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
       </Helmet>
 
       {/* Page Header */}
-      <section className='hero py-5'>
-        <div className='container'>
+      <section className='hero py-16'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <motion.div
             className='text-center text-white'
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className='display-5 fw-bold mb-3'>{title}</h1>
-            {subtitle && <p className='lead'>{subtitle}</p>}
+            <h1 className='mb-3 text-4xl font-bold md:text-5xl'>{title}</h1>
+            {subtitle && (
+              <p className='mx-auto max-w-3xl text-lg text-white/90'>
+                {subtitle}
+              </p>
+            )}
           </motion.div>
         </div>
       </section>
 
       {/* Main Content */}
       <section className='section'>
-        <div className='container'>
-          <div className='row align-items-center mb-5'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='mb-5 grid items-center gap-8 lg:grid-cols-2'>
             <motion.div
-              className='col-lg-6'
+              className='w-full'
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
             >
               <img
                 src={assetPath(image || '/img/project-1.jpg')}
                 alt={title}
-                className='img-fluid rounded shadow'
+                className='w-full rounded-xl shadow-lg'
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.src = assetPath('/img/project-1.jpg');
@@ -54,12 +59,14 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
               />
             </motion.div>
             <motion.div
-              className='col-lg-6 mt-4 mt-lg-0'
+              className='w-full'
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
             >
               <h2 className='mb-4'>Overview</h2>
-              <p className='text-secondary fs-5'>{description}</p>
+              <p className='text-lg text-(--color-typography-secondary)'>
+                {description}
+              </p>
             </motion.div>
           </div>
         </div>
@@ -68,30 +75,32 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
       {/* Features */}
       {features && features.length > 0 && (
         <section className='section bg-light'>
-          <div className='container'>
+          <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
             <div className='section-title'>
               <h2>Key Features</h2>
               <p>Powerful capabilities to drive your success</p>
             </div>
-            <div className='row g-4'>
+            <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
-                  className='col-lg-4 col-md-6'
+                  className='w-full'
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className='card h-100'>
-                    <div className='card-body'>
+                  <div className='h-full rounded-xl border border-(--color-primary-20) bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md'>
+                    <div>
                       <div className='mb-3'>
                         <i
-                          className={`fas ${feature.icon} fa-2x text-primary`}
+                          className={`fas ${feature.icon} text-3xl text-(--color-primary)`}
                         ></i>
                       </div>
-                      <h5 className='card-title mb-3'>{feature.title}</h5>
-                      <p className='card-text text-secondary'>
+                      <h5 className='mb-3 text-xl font-semibold text-(--color-primary)'>
+                        {feature.title}
+                      </h5>
+                      <p className='text-(--color-typography-secondary)'>
                         {feature.description}
                       </p>
                     </div>
@@ -106,27 +115,31 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
       {/* Benefits */}
       {benefits && benefits.length > 0 && (
         <section className='section'>
-          <div className='container'>
+          <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
             <div className='section-title'>
               <h2>Benefits</h2>
               <p>How this solution drives value for your business</p>
             </div>
-            <div className='row g-4'>
+            <div className='grid gap-6 lg:grid-cols-2'>
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={index}
-                  className='col-lg-6'
+                  className='w-full'
                   initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <div className='d-flex mb-4'>
-                    <div className='flex-shrink-0'>
-                      <i className='fas fa-check-circle fa-2x text-primary'></i>
+                  <div className='mb-4 flex items-start gap-3'>
+                    <div className='shrink-0'>
+                      <i className='fas fa-check-circle text-3xl text-(--color-primary)'></i>
                     </div>
-                    <div className='ms-3'>
-                      <h5>{benefit.title}</h5>
-                      <p className='text-secondary'>{benefit.description}</p>
+                    <div>
+                      <h5 className='text-xl font-semibold text-(--color-primary)'>
+                        {benefit.title}
+                      </h5>
+                      <p className='text-(--color-typography-secondary)'>
+                        {benefit.description}
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -140,25 +153,28 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
 
       {/* CTA */}
       <section
-        className='py-5'
+        className='py-16'
         style={{
           background:
             'linear-gradient(135deg, var(--primary) 0%, #0085d6 100%)',
         }}
       >
-        <div className='container'>
-          <div className='row align-items-center'>
-            <div className='col-lg-8'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='grid items-center gap-6 lg:grid-cols-3'>
+            <div className='lg:col-span-2'>
               <h3 className='text-white mb-3'>Ready to Get Started?</h3>
-              <p className='text-white-50 mb-0 fs-5'>
+              <p className='mb-0 text-lg text-white/80'>
                 Contact us today to learn how this solution can transform your
                 business
               </p>
             </div>
-            <div className='col-lg-4 text-lg-end mt-4 mt-lg-0'>
-              <a href='/contact' className='btn btn-light btn-lg px-4'>
+            <div className='lg:text-right'>
+              <Link
+                to='/contact'
+                className='inline-flex rounded-xl bg-white px-6 py-3 font-semibold text-(--color-primary) transition hover:bg-(--color-secondary-20)'
+              >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>

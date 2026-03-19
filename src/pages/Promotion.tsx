@@ -39,264 +39,296 @@ const features = [
   },
 ];
 
-const benefits = [
-  {
-    icon: "fa-arrow-trend-up",
-    title: "Higher ROI",
-    description: "Maximize return on every promotional investment.",
-  },
-  {
-    icon: "fa-bullseye",
-    title: "Better Targeting",
-    description: "Reach the right customers with the right offers.",
-  },
-  {
-    icon: "fa-shield-halved",
-    title: "Reduced Cannibalization",
-    description: "Minimize impact on regular sales performance.",
-  },
-  {
-    icon: "fa-chart-line",
-    title: "Improved Planning",
-    description: "Drive decisions with real-time data intelligence.",
-  },
-];
-
-const dashboards = [
-  {
-    icon: "fa-chart-pie",
-    badge: "Planning",
-    title: "Promotion Planning Dashboard",
-    description:
-      "Design, schedule, and monitor promotional events with complete campaign visibility.",
-    cta: "Open Dashboard",
-    accentClass: "promo-accent-primary",
-    onClick: () => {
-      window.open(
-        "https://pnp.retailsso.com/promotions/dashboards/main",
-        "_blank",
-        "noopener,noreferrer"
-      );
+  const benefits: Benefit[] = [
+    {
+      title: 'Higher ROI',
+      description: 'Maximize return on promotional investments',
     },
-  },
-  {
-    icon: "fa-tag",
-    badge: "Optimization",
-    title: "Price Optimization Dashboard",
-    description:
-      "Analyze KVI pricing behavior and optimize strategy with advanced pricing insights.",
-    cta: "Open Dashboard",
-    accentClass: "promo-accent-secondary",
-    onClick: () => {
-      window.open(
-        "https://pnp.mafcarrefour.local/pricing/dashboard/pricing-kvi",
-        "_blank",
-        "noopener,noreferrer"
-      );
+    {
+      title: 'Better Targeting',
+      description: 'Target the right customers with the right offers',
     },
-  },
-];
+    {
+      title: 'Reduced Cannibalization',
+      description: 'Minimize negative impacts on regular sales',
+    },
+    {
+      title: 'Improved Planning',
+      description: 'Make data-driven promotion planning decisions',
+    },
+  ];
 
-/* ─── animation presets ─────────────────────────────────── */
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 20 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.45, delay },
-});
+  const SectionHeader: React.FC<{ title: string; description: string }> = ({
+    title,
+    description,
+  }) => (
+    <div className='mb-14 text-center'>
+      <h2 className='mb-3 text-3xl font-bold text-(--color-primary) md:text-4xl'>
+        {title}
+      </h2>
+      <p className='mx-auto max-w-3xl text-base leading-7 text-(--color-typography-secondary)'>
+        {description}
+      </p>
+    </div>
+  );
 
-/* ─── component ─────────────────────────────────────────── */
-const Promotion: React.FC = () => (
-  <>
-    <Helmet>
-      <title>Pricing &amp; Promotion Effectiveness | RACE.AI</title>
-      <meta
-        name="description"
-        content="Optimize promotional strategy with data-driven insights"
-      />
-    </Helmet>
+  return (
+    <>
+      <Helmet>
+        <title>Pricing & Promotion Effectiveness | RACE.AI</title>
+        <meta
+          name='description'
+          content='Optimize promotional strategy with data-driven insights'
+        />
+      </Helmet>
 
-    <main>
-      {/* ── Hero ──────────────────────────────────────────── */}
-      <section className="promo-hero">
-        <div className="container">
-          <motion.div
-            className="promo-hero-content"
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="promo-eyebrow">Pricing &amp; Promotion</span>
-            <h1>Promotion Effectiveness</h1>
-            <p>
-              Plan, execute, and measure campaigns for higher ROI — powered by
-              enterprise-grade pricing intelligence.
-            </p>
-            <div className="promo-hero-actions">
-              <button
-                type="button"
-                className="promo-btn-white"
-                onClick={dashboards[0].onClick}
+      <main>
+        <section
+          className='py-24 text-white md:py-28'
+          style={{
+            background:
+              'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-80) 55%, var(--color-secondary) 100%)',
+          }}
+        >
+          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
+            <motion.div
+              className='mx-auto max-w-4xl text-center'
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className='mb-4 text-4xl font-extrabold tracking-tight md:text-6xl'>
+                Pricing & Promotion Effectiveness
+              </h1>
+              <p className='mx-auto mb-7 max-w-3xl text-lg leading-8 text-white/85'>
+                Optimize promotion planning and pricing intelligence with a
+                single, data-driven workflow designed for enterprise retail
+                teams.
+              </p>
+              <div className='flex flex-wrap items-center justify-center gap-3'>
+                <button
+                  type='button'
+                  className='rounded-xl border border-white bg-white px-6 py-3 text-base font-semibold text-(--color-primary) shadow-sm transition hover:bg-(--color-secondary-20)'
+                  onClick={handlePromotionPlanningClick}
+                >
+                  Explore Promotion Planning
+                </button>
+                <button
+                  type='button'
+                  className='rounded-xl border border-white/50 bg-white/10 px-6 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/20'
+                  onClick={handlePriceOptimizationClick}
+                >
+                  View Optimization Dashboard
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className='py-20 md:py-24'>
+          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
+            <div className='grid items-center gap-8 lg:grid-cols-2'>
+              <motion.div
+                className='w-full'
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
               >
-                Explore Promotion Planning
-              </button>
-              <button
-                type="button"
-                className="promo-btn-ghost"
-                onClick={dashboards[1].onClick}
+                <img
+                  src={assetPath('/img/project-8.jpg')}
+                  alt='Pricing and Promotion Analytics'
+                  className='max-h-105 w-full rounded-xl object-cover shadow-[0_12px_30px_rgba(49,37,28,0.12)]'
+                />
+              </motion.div>
+              <motion.div
+                className='w-full'
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
               >
-                View Price Optimization
-              </button>
+                <SectionHeader
+                  title='Overview'
+                  description='Our Pricing & Promotion Effectiveness solution helps you plan, execute, and measure campaigns for higher ROI and stronger pricing decisions across categories.'
+                />
+                <p className='max-w-xl text-base leading-8 text-(--color-typography)'>
+                  From campaign design to post-promotion analysis, teams can
+                  align pricing, promotional depth, and customer response in one
+                  integrated analytics framework.
+                </p>
+              </motion.div>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── Overview ──────────────────────────────────────── */}
-      <section className="promo-section">
-        <div className="container">
-          <div className="row align-items-center g-5">
-            <motion.div className="col-lg-6" {...fadeUp()}>
-              <img
-                src={assetPath("/img/project-8.jpg")}
-                alt="Pricing and Promotion Analytics"
-                className="promo-overview-img"
-              />
-            </motion.div>
-
-            <motion.div className="col-lg-6" {...fadeUp(0.1)}>
-              <span className="promo-label-secondary">Overview</span>
-              <h2 className="promo-section-heading">
-                One Platform for Pricing &amp; Promotions
-              </h2>
-              <p className="promo-body-text">
-                Our solution helps teams plan, execute, and measure campaigns
-                for higher ROI. From campaign design to post-promotion analysis,
-                align pricing depth and customer response in a single integrated
-                framework.
-              </p>
-              <p className="promo-body-text">
-                Leverage AI recommendations, historical patterns, and real-time
-                dashboards to make every promotion count.
-              </p>
-            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── Features ──────────────────────────────────────── */}
-      <section className="promo-section promo-bg-surface">
-        <div className="container">
-          <motion.div className="promo-section-header" {...fadeUp()}>
-            <span className="promo-label-secondary">Capabilities</span>
-            <h2 className="promo-section-heading">Key Features</h2>
-          </motion.div>
-
-          <div className="row g-4">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                className="col-lg-4 col-md-6"
-                {...fadeUp(i * 0.06)}
-              >
-                <div className="promo-feature-card h-100">
-                  <div className="promo-icon-box promo-icon-primary">
-                    <i className={`fas ${f.icon}`} />
-                  </div>
-                  <h3 className="promo-card-title">{f.title}</h3>
-                  <p className="promo-card-text">{f.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Benefits ──────────────────────────────────────── */}
-      <section className="promo-section">
-        <div className="container">
-          <motion.div className="promo-section-header" {...fadeUp()}>
-            <span className="promo-label-secondary">Impact</span>
-            <h2 className="promo-section-heading">Business Benefits</h2>
-          </motion.div>
-
-          <div className="row g-4">
-            {benefits.map((b, i) => (
-              <motion.div
-                key={b.title}
-                className="col-lg-6"
-                {...fadeUp(i * 0.07)}
-              >
-                <div className="promo-benefit-card h-100">
-                  <div className="promo-icon-box promo-icon-success">
-                    <i className={`fas ${b.icon}`} />
-                  </div>
-                  <div>
-                    <h4 className="promo-card-title">{b.title}</h4>
-                    <p className="promo-card-text mb-0">{b.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Dashboards ────────────────────────────────────── */}
-      <section className="promo-section promo-bg-surface">
-        <div className="container">
-          <motion.div className="promo-section-header" {...fadeUp()}>
-            <span className="promo-label-secondary">Tools</span>
-            <h2 className="promo-section-heading">Launch Your Dashboards</h2>
-          </motion.div>
-
-          <div className="row g-4">
-            {dashboards.map((d, i) => (
-              <motion.div
-                key={d.title}
-                className="col-lg-6"
-                {...fadeUp(i * 0.1)}
-              >
-                <div className={`promo-dashboard-card h-100 ${d.accentClass}`}>
-                  <div className="promo-dashboard-header">
-                    <div className="promo-dashboard-icon">
-                      <i className={`fas ${d.icon}`} />
+        <section className='bg-(--color-surface-bg) py-20 md:py-24'>
+          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
+            <SectionHeader
+              title='Key Features'
+              description='Powerful capabilities for promotion optimization and pricing intelligence'
+            />
+            <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
+              {features.map((feature, index) => (
+                <motion.div
+                  key={feature.title}
+                  className='w-full'
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  <article className='flex h-full flex-col gap-3 rounded-xl border border-(--color-primary-20) bg-white p-7 shadow-[0_6px_16px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_14px_26px_rgba(15,23,42,0.12)]'>
+                    <div className='inline-flex h-12 w-12 items-center justify-center rounded-lg bg-(--color-primary-20) text-xl text-(--color-primary)'>
+                      <i className={`fas ${feature.icon}`}></i>
                     </div>
-                    <span className="promo-dashboard-badge">{d.badge}</span>
+                    <h3 className='m-0 text-lg font-bold text-(--color-primary)'>
+                      {feature.title}
+                    </h3>
+                    <p className='m-0 leading-7 text-(--color-typography-secondary)'>
+                      {feature.description}
+                    </p>
+                  </article>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className='py-20 md:py-24'>
+          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
+            <SectionHeader
+              title='Benefits'
+              description='How this solution creates measurable business impact'
+            />
+            <div className='grid gap-6 lg:grid-cols-2'>
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit.title}
+                  className='w-full'
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.06 }}
+                  viewport={{ once: true }}
+                >
+                  <div className='flex items-start gap-3 px-1 py-4'>
+                    <span
+                      className='mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--color-success-20) text-xs text-(--color-success)'
+                      aria-hidden='true'
+                    >
+                      <i className='fas fa-check'></i>
+                    </span>
+                    <div>
+                      <h4 className='mb-1 text-lg font-bold text-(--color-primary)'>
+                        {benefit.title}
+                      </h4>
+                      <p className='m-0 leading-7 text-(--color-typography-secondary)'>
+                        {benefit.description}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="promo-dashboard-title">{d.title}</h3>
-                  <p className="promo-card-text">{d.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          className='py-20 md:py-24'
+          style={{
+            background:
+              'linear-gradient(180deg, #fff 0%, var(--color-secondary-20) 100%)',
+          }}
+        >
+          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
+            <SectionHeader
+              title='Launch Pricing Tools Instantly'
+              description='Jump directly into your planning and optimization dashboards from one place.'
+            />
+            <div className='grid gap-6 lg:grid-cols-2'>
+              <div>
+                <article className='flex h-full flex-col rounded-xl border border-(--color-primary-20) bg-white p-8 shadow-[0_8px_18px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]'>
+                  <div className='mb-4 flex items-center justify-between'>
+                    <div className='inline-flex h-12 w-12 items-center justify-center rounded-lg bg-(--color-primary-20) text-xl text-(--color-primary)'>
+                      <i className='fas fa-chart-pie'></i>
+                    </div>
+                    <span className='rounded-full bg-(--color-primary-20) px-3 py-1 text-xs font-bold uppercase tracking-widest text-(--color-primary-80)'>
+                      Planning
+                    </span>
+                  </div>
+                  <h3 className='mb-2 text-2xl font-bold text-(--color-primary)'>
+                    Promotion Planning Dashboard
+                  </h3>
+                  <p className='mb-6 leading-7 text-(--color-typography-secondary)'>
+                    Design, schedule, and monitor promotional events with
+                    complete campaign visibility.
+                  </p>
                   <button
-                    type="button"
-                    className="promo-btn-cta mt-auto"
-                    onClick={d.onClick}
+                    type='button'
+                    className='mt-auto w-fit rounded-lg bg-(--color-primary) px-5 py-2.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-(--color-primary-80)'
+                    onClick={handlePromotionPlanningClick}
                   >
                     {d.cta} &rarr;
                   </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                </article>
+              </div>
 
-      {/* ── CTA ───────────────────────────────────────────── */}
-      <section className="promo-cta-section">
-        <div className="container">
-          <motion.div className="promo-cta-content" {...fadeUp()}>
-            <h2>Ready to Get Started?</h2>
-            <p>
-              Contact us to learn how Promotion Optimization can accelerate your
-              retail performance.
-            </p>
-            <Link to="/contact" className="promo-btn-white">
-              Contact Us &rarr;
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-    </main>
-  </>
-);
+              <div>
+                <article className='flex h-full flex-col rounded-xl border border-(--color-primary-20) bg-white p-8 shadow-[0_8px_18px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]'>
+                  <div className='mb-4 flex items-center justify-between'>
+                    <div className='inline-flex h-12 w-12 items-center justify-center rounded-lg bg-(--color-secondary-20) text-xl text-(--color-secondary)'>
+                      <i className='fas fa-tag'></i>
+                    </div>
+                    <span className='rounded-full bg-(--color-primary-20) px-3 py-1 text-xs font-bold uppercase tracking-widest text-(--color-primary-80)'>
+                      Optimization
+                    </span>
+                  </div>
+                  <h3 className='mb-2 text-2xl font-bold text-(--color-primary)'>
+                    Price Optimization Dashboard
+                  </h3>
+                  <p className='mb-6 leading-7 text-(--color-typography-secondary)'>
+                    Analyze KVI pricing behavior and optimize strategy with
+                    advanced pricing insights.
+                  </p>
+                  <button
+                    type='button'
+                    className='mt-auto w-fit rounded-lg bg-(--color-primary) px-5 py-2.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-(--color-primary-80)'
+                    onClick={handlePriceOptimizationClick}
+                  >
+                    Open Dashboard
+                  </button>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className='py-20 md:py-24'
+          style={{
+            background:
+              'linear-gradient(135deg, var(--color-primary) 0%, var(--color-burgundy) 100%)',
+          }}
+        >
+          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
+            <div className='mx-auto max-w-3xl text-center'>
+              <h3 className='mb-3 text-4xl font-bold text-white'>
+                Ready to Get Started?
+              </h3>
+              <p className='mb-6 text-lg text-white/85'>
+                Contact us today to learn how Promotion Optimization can
+                accelerate your retail performance.
+              </p>
+              <Link
+                to='/contact'
+                className='inline-flex rounded-xl bg-white px-6 py-3 text-base font-semibold text-(--color-primary) transition hover:bg-(--color-secondary-20)'
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
+  );
+};
 
 export default Promotion;

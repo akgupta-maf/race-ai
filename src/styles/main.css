@@ -1,5 +1,6 @@
 /* Tailwind CSS */
-@import "tailwindcss";
+@import 'tailwindcss';
+@config '../../tailwind.config.js';
 
 /* Custom CSS - Professional React Application */
 
@@ -73,23 +74,46 @@ html {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1rem;
+}
 
 @media (max-width: 768px) {
-  h1 { font-size: 2rem; }
-  h2 { font-size: 1.75rem; }
-  h3 { font-size: 1.5rem; }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
 }
 
 p {
@@ -140,7 +164,7 @@ p {
 .card {
   border: none;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   overflow: hidden;
   height: 100%;
@@ -148,7 +172,7 @@ p {
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .card-img-top {
@@ -269,20 +293,32 @@ p {
 }
 
 /* Utilities */
-.text-primary { color: var(--primary) !important; }
-.bg-light { background: var(--light) !important; }
-.bg-dark { background: var(--dark) !important; }
+.text-primary {
+  color: var(--primary) !important;
+}
+.bg-light {
+  background: var(--light) !important;
+}
+.bg-dark {
+  background: var(--dark) !important;
+}
 
-.shadow-sm { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.shadow { box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
-.shadow-lg { box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.shadow-sm {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.shadow-lg {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
 
 /* Responsive */
 @media (max-width: 768px) {
   .section {
     padding: 60px 0;
   }
-  
+
   .hero {
     padding: 80px 0 60px;
   }
@@ -297,7 +333,9 @@ p {
 .page-enter-active {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
+  transition:
+    opacity 300ms,
+    transform 300ms;
 }
 
 /* Custom Scrollbar */
