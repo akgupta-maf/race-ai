@@ -143,21 +143,21 @@ const Promotion: React.FC = () => {
 
         <section className='py-20 md:py-24'>
           <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
-            <div className='grid items-center gap-8 lg:grid-cols-2'>
+            <div className='grid items-center gap-8 grid-cols-12'>
               <motion.div
-                className='w-full'
+                className='w-full col-span-7'
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
                 <img
-                  src={assetPath('/img/project-8.jpg')}
+                  src={assetPath('/img/promotions_dashboard.png')}
                   alt='Pricing and Promotion Analytics'
                   className='max-h-105 w-full rounded-xl object-cover shadow-[0_12px_30px_rgba(49,37,28,0.12)]'
                 />
               </motion.div>
               <motion.div
-                className='w-full'
+                className='w-full col-span-5'
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}

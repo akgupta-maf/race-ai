@@ -44,7 +44,7 @@ const Services: React.FC = () => {
         { name: 'Category Roles', link: '/category/roles' },
         { name: 'Localization', link: '/category/localization' },
         { name: 'Rationalization', link: '/category/rationalization' },
-        { name: 'Customer Decision Tree', link: '/category/decision-tree' },
+        { name: 'Whitespace', link: '/category/whitespace' },
       ],
     },
     {

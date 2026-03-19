@@ -60,7 +60,7 @@ const Localization = () => {
       title='Localization'
       subtitle='Tailor Your Assortments to Local Markets'
       description='Our Localization solution helps you customize product assortments based on local market characteristics and customer preferences, driving sales and customer satisfaction.'
-      image='/img/project-6.jpg'
+      image='/img/localization_dashboard.png'
       features={features}
       benefits={benefits}
     >

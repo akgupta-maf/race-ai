@@ -59,7 +59,7 @@ const Rationalization = () => {
       title='Rationalization'
       subtitle='Optimize Your Product Portfolio'
       description='Our Rationalization solution helps you streamline your product assortment by identifying and eliminating underperforming SKUs, improving efficiency and profitability.'
-      image='/img/project-7.jpg'
+      image='/img/rationalization_dashboard.png'
       features={features}
       benefits={benefits}
     >

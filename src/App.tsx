@@ -30,7 +30,6 @@ import SupplierNegotiation from './pages/negotiation/SupplierNegotiation';
 
 // Category Optimization
 import CategoryRoles from './pages/category/CategoryRoles';
-import CustomerDecisionTree from './pages/category/CustomerDecisionTree';
 import Localization from './pages/category/Localization';
 import Rationalization from './pages/category/Rationalization';
 
@@ -39,6 +38,7 @@ import NotFound from './pages/NotFound';
 import Promotion from './pages/Promotion';
 import RaceGPT from './pages/RaceGPT';
 import Sustainability from './pages/Sustainability';
+import Whitespace from './pages/category/Whitespace';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -92,10 +92,7 @@ const App: React.FC = () => {
             path='category/rationalization'
             element={<Rationalization />}
           />
-          <Route
-            path='category/decision-tree'
-            element={<CustomerDecisionTree />}
-          />
+          <Route path='category/whitespace' element={<Whitespace />} />
 
           {/* Other */}
           <Route path='promotion' element={<Promotion />} />

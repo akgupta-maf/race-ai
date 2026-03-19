@@ -59,7 +59,7 @@ const CategoryRoles = () => {
       title='Category Roles'
       subtitle='Define and Optimize Strategic Category Roles'
       description='Our Category Roles solution helps you define and manage strategic roles for each product category, ensuring alignment with business objectives and optimal resource allocation.'
-      image='/img/project-5.jpg'
+      image='/img/category_roles.png'
       features={features}
       benefits={benefits}
     >

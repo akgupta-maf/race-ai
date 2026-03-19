@@ -42,16 +42,16 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
       {/* Main Content */}
       <section className='section'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
-          <div className='mb-5 grid items-center gap-8 lg:grid-cols-2'>
+          <div className='mb-5 grid items-center gap-8 grid-cols-12'>
             <motion.div
-              className='w-full'
+              className='w-full col-span-7'
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
             >
               <img
                 src={assetPath(image || '/img/project-1.jpg')}
                 alt={title}
-                className='w-full rounded-xl shadow-lg'
+                className='h-96 w-full rounded-xl shadow-lg'
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.src = assetPath('/img/project-1.jpg');
@@ -59,7 +59,7 @@ const PageTemplate: React.FC<PageTemplateProps> = ({
               />
             </motion.div>
             <motion.div
-              className='w-full'
+              className='w-full col-span-5'
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
             >
