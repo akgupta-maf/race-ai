@@ -202,17 +202,23 @@ const Home: React.FC = () => {
               </p>
               <div className='home-hero-actions'>
                 <Link
-                  to='/services'
+                  to='#'
                   className='home-btn-primary inline-flex items-center justify-center text-base no-underline'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      .getElementById('our-core-solutions')
+                      ?.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   Explore Solutions
                 </Link>
-                <Link
+                {/* <Link
                   to='/race-gpt'
                   className='home-btn-secondary inline-flex items-center justify-center text-base no-underline'
                 >
                   View Platform
-                </Link>
+                </Link> */}
               </div>
             </motion.div>
 
@@ -254,7 +260,10 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className='section home-solutions flex justify-center items-center'>
+      <section
+        className='section home-solutions flex justify-center items-center'
+        id='our-core-solutions'
+      >
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='section-title home-section-title'>
             <h2>Our Core Solutions</h2>

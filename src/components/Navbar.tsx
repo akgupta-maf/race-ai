@@ -168,12 +168,10 @@ const Navbar = () => {
             <NavLink to='/' className={navLinkClass}>
               Home
             </NavLink>
-            <NavLink to='/about' className={navLinkClass}>
-              About Us
-            </NavLink>
-            <NavLink to='/services' className={navLinkClass}>
+
+            {/* <NavLink to='/services' className={navLinkClass}>
               Expertise
-            </NavLink>
+            </NavLink> */}
 
             <div className='relative' ref={quickLinksRef}>
               <button
@@ -240,7 +238,9 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-
+            <NavLink to='/about' className={navLinkClass}>
+              About Us
+            </NavLink>
             <NavLink to='/contact' className={navLinkClass}>
               Contact
             </NavLink>
@@ -259,16 +259,8 @@ const Navbar = () => {
                   Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to='/about'
-                  className={navLinkClass}
-                  onClick={closeMobileMenu}
-                >
-                  About Us
-                </NavLink>
-              </li>
-              <li>
+
+              {/* <li>
                 <NavLink
                   to='/services'
                   className={navLinkClass}
@@ -276,7 +268,7 @@ const Navbar = () => {
                 >
                   Expertise
                 </NavLink>
-              </li>
+              </li> */}
 
               <li className='pt-2'>
                 <p className='px-3 pb-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white/55'>
@@ -320,7 +312,15 @@ const Navbar = () => {
                   ))}
                 </div>
               </li>
-
+              <li>
+                <NavLink
+                  to='/about'
+                  className={navLinkClass}
+                  onClick={closeMobileMenu}
+                >
+                  About Us
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to='/contact'

@@ -139,9 +139,9 @@ const About: React.FC = () => {
           <div className='grid items-center gap-8 lg:grid-cols-2'>
             <div className='order-1 lg:order-2'>
               <img
-                src={assetPath('/img/expertise.jpg')}
+                src={assetPath('/img/about_us1.jpg')}
                 alt='Our Approach'
-                className='w-full rounded-xl shadow-lg'
+                className='w-full rounded-xl shadow-lg max-h-150'
               />
             </div>
             <div className='order-2 lg:order-1'>
