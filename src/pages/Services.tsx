@@ -37,14 +37,14 @@ const Services: React.FC = () => {
       ],
     },
     {
-      category: 'Category Optimization',
+      category: 'Assortment Optimization',
       icon: 'fa-th-large',
       image: '/img/service-4.jpg',
       items: [
-        { name: 'Category Roles', link: '/category/roles' },
-        { name: 'Localization', link: '/category/localization' },
-        { name: 'Rationalization', link: '/category/rationalization' },
-        { name: 'Whitespace', link: '/category/whitespace' },
+        {
+          name: 'Assortment Optimization',
+          link: '/category/assortment-optimization',
+        },
       ],
     },
     {

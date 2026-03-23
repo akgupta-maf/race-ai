@@ -114,11 +114,6 @@ h6 {
   }
 }
 
-p {
-  margin-bottom: 1rem;
-  /* color: var(--secondary); */
-}
-
 /* Buttons */
 .btn {
   font-weight: 500;

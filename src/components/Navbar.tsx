@@ -4,14 +4,59 @@ import { assetPath } from '@/utils/assetPath';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-const quickLinksGroups = [
+type QuickLinkItem = {
+  label: string;
+  to?: string;
+  href?: string;
+};
+
+type QuickLinkGroup = {
+  title: string;
+  links: QuickLinkItem[];
+};
+
+const quickLinksGroups: QuickLinkGroup[] = [
   {
-    title: 'Business',
+    title: 'Assortment Optimization',
     links: [
-      { to: '/insights/analysis', label: 'Insight Analysis' },
-      { to: '/insights/boycott', label: 'Boycott Analysis' },
+      {
+        label: 'Category Roles Dashboard',
+        href: 'https://catman.mafcarrefour.local/category-review/category-roles',
+      },
+      {
+        label: 'Localization Dashboard',
+        href: 'https://catman.mafcarrefour.local/localization/',
+      },
+      {
+        label: 'Rationalization Dashboard',
+        href: 'https://catman.mafcarrefour.local/rationalization/',
+      },
+      {
+        label: 'Whitespace Dashboard',
+        href: 'https://catman.mafcarrefour.local/whitespace/',
+      },
     ],
   },
+  {
+    title: 'Pricing & Promotion',
+    links: [
+      {
+        label: 'Promotion Planning Dashboard',
+        href: 'https://pnp.retailsso.com/promotions/dashboards/main',
+      },
+      {
+        label: 'Price Optimization Dashboard',
+        href: 'https://pnp.mafcarrefour.local/pricing/dashboard/pricing-kvi',
+      },
+    ],
+  },
+  // {
+  //   title: 'Business',
+  //   links: [
+  //     { to: '/insights/analysis', label: 'Insight Analysis' },
+  //     { to: '/insights/boycott', label: 'Boycott Analysis' },
+  //   ],
+  // },
   {
     title: 'Customer',
     links: [
@@ -24,7 +69,10 @@ const quickLinksGroups = [
     title: 'Operations',
     links: [
       { to: '/negotiation/supplier', label: 'Supplier Negotiation' },
-      { to: '/category/roles', label: 'Category Roles' },
+      {
+        to: '/category/assortment-optimization',
+        label: 'Assortment Optimization',
+      },
       { to: '/promotion', label: 'Pricing & Promotion' },
       { to: '/sustainability', label: 'Sustainability' },
     ],
@@ -156,21 +204,33 @@ const Navbar = () => {
                     {quickLinksGroups.map((group) => (
                       <div
                         key={group.title}
-                        className='mb-4 rounded-xl border border-white/8 bg-white/4 p-2 last:mb-0'
+                        className='mb-3 rounded-xl border border-white/8 bg-white/4 p-2 last:mb-0'
                       >
                         <p className='px-2 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-(--color-secondary-80)'>
                           {group.title}
                         </p>
-                        <ul className='space-y-1.5'>
+                        <ul className=''>
                           {group.links.map((item) => (
-                            <li key={item.to}>
-                              <Link
-                                to={item.to}
-                                className='block rounded-xl px-3 py-3 text-sm font-medium text-white/88 transition hover:bg-white/10 hover:text-white'
-                                onClick={closeMobileMenu}
-                              >
-                                {item.label}
-                              </Link>
+                            <li key={item.to || item.href || item.label}>
+                              {item.href ? (
+                                <a
+                                  href={item.href}
+                                  className='block rounded-xl px-3 py-3 text-sm font-medium text-white/88 transition hover:bg-white/10 hover:text-white'
+                                  onClick={closeMobileMenu}
+                                  target='_blank'
+                                  rel='noreferrer'
+                                >
+                                  {item.label}
+                                </a>
+                              ) : (
+                                <Link
+                                  to={item.to || '/'}
+                                  className='block rounded-xl px-3 py-3 text-sm font-medium text-white/88 transition hover:bg-white/10 hover:text-white'
+                                  onClick={closeMobileMenu}
+                                >
+                                  {item.label}
+                                </Link>
+                              )}
                             </li>
                           ))}
                         </ul>
@@ -232,16 +292,29 @@ const Navbar = () => {
                         {group.title}
                       </p>
                       <div className='space-y-1'>
-                        {group.links.map((item) => (
-                          <Link
-                            key={item.to}
-                            to={item.to}
-                            className='block rounded-xl px-3 py-2.5 text-sm font-medium text-white/88 transition hover:bg-white/10 hover:text-white'
-                            onClick={closeMobileMenu}
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
+                        {group.links.map((item) =>
+                          item.href ? (
+                            <a
+                              key={item.href || item.label}
+                              href={item.href}
+                              className='block rounded-xl px-3 py-2.5 text-sm font-medium text-white/88 transition hover:bg-white/10 hover:text-white'
+                              onClick={closeMobileMenu}
+                              target='_blank'
+                              rel='noreferrer'
+                            >
+                              {item.label}
+                            </a>
+                          ) : (
+                            <Link
+                              key={item.to || item.label}
+                              to={item.to || '/'}
+                              className='block rounded-xl px-3 py-2.5 text-sm font-medium text-white/88 transition hover:bg-white/10 hover:text-white'
+                              onClick={closeMobileMenu}
+                            >
+                              {item.label}
+                            </Link>
+                          ),
+                        )}
                       </div>
                     </div>
                   ))}

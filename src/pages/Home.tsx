@@ -93,10 +93,10 @@ const Home: React.FC = () => {
     },
     {
       icon: 'fa-tags',
-      title: 'Category Optimization',
+      title: 'Assortment Optimization',
       description:
-        'Maximize category performance with intelligent optimization',
-      link: '/category/roles',
+        'Maximize assortment performance with intelligent optimization',
+      link: '/category/assortment-optimization',
     },
     {
       icon: 'fa-percent',

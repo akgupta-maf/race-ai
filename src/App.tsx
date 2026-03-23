@@ -29,16 +29,13 @@ import NegotiationGap from './pages/negotiation/NegotiationGap';
 import SupplierNegotiation from './pages/negotiation/SupplierNegotiation';
 
 // Category Optimization
-import CategoryRoles from './pages/category/CategoryRoles';
-import Localization from './pages/category/Localization';
-import Rationalization from './pages/category/Rationalization';
+import AssortmentOptimization from './pages/category/AssortmentOptimization';
 
 // Other Pages
 import NotFound from './pages/NotFound';
 import Promotion from './pages/Promotion';
 import RaceGPT from './pages/RaceGPT';
 import Sustainability from './pages/Sustainability';
-import Whitespace from './pages/category/Whitespace';
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -86,13 +83,23 @@ const App: React.FC = () => {
           <Route path='negotiation/commodity' element={<CommodityAnalysis />} />
 
           {/* Category Optimization */}
-          <Route path='category/roles' element={<CategoryRoles />} />
-          <Route path='category/localization' element={<Localization />} />
+          <Route
+            path='category/assortment-optimization'
+            element={<AssortmentOptimization />}
+          />
+          <Route path='category/roles' element={<AssortmentOptimization />} />
+          <Route
+            path='category/localization'
+            element={<AssortmentOptimization />}
+          />
           <Route
             path='category/rationalization'
-            element={<Rationalization />}
+            element={<AssortmentOptimization />}
           />
-          <Route path='category/whitespace' element={<Whitespace />} />
+          <Route
+            path='category/whitespace'
+            element={<AssortmentOptimization />}
+          />
 
           {/* Other */}
           <Route path='promotion' element={<Promotion />} />
