@@ -67,7 +67,7 @@ const About: React.FC = () => {
           <div className='mb-5 grid items-center gap-8 lg:grid-cols-2'>
             <div>
               <img
-                src={assetPath('/img/about_us.jpg')}
+                src={assetPath('/img/about_us.webp')}
                 alt='About RACE.AI'
                 className='w-full rounded-xl shadow-lg'
               />
@@ -139,7 +139,7 @@ const About: React.FC = () => {
           <div className='grid items-center gap-8 lg:grid-cols-2'>
             <div className='order-1 lg:order-2'>
               <img
-                src={assetPath('/img/about_us1.jpg')}
+                src={assetPath('/img/about_us1.webp')}
                 alt='Our Approach'
                 className='w-full rounded-xl shadow-lg max-h-150'
               />
