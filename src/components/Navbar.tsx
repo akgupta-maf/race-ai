@@ -238,6 +238,9 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+            <NavLink to='/performance-tracking' className={navLinkClass}>
+              Performance Tracking
+            </NavLink>
             <NavLink to='/about' className={navLinkClass}>
               About Us
             </NavLink>
@@ -311,6 +314,15 @@ const Navbar = () => {
                     </div>
                   ))}
                 </div>
+              </li>
+              <li>
+                <NavLink
+                  to='/performance-tracking'
+                  className={navLinkClass}
+                  onClick={closeMobileMenu}
+                >
+                  Performance Tracking
+                </NavLink>
               </li>
               <li>
                 <NavLink

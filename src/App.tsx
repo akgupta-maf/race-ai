@@ -33,6 +33,7 @@ import AssortmentOptimization from './pages/category/AssortmentOptimization';
 
 // Other Pages
 import NotFound from './pages/NotFound';
+import PerformanceTracking from './pages/PerformanceTracking';
 import Promotion from './pages/Promotion';
 import RaceGPT from './pages/RaceGPT';
 import Sustainability from './pages/Sustainability';
@@ -105,6 +106,10 @@ const App: React.FC = () => {
           <Route path='promotion' element={<Promotion />} />
           <Route path='sustainability' element={<Sustainability />} />
           <Route path='race-gpt' element={<RaceGPT />} />
+          <Route
+            path='performance-tracking'
+            element={<PerformanceTracking />}
+          />
 
           <Route path='*' element={<NotFound />} />
         </Route>
