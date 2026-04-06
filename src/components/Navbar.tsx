@@ -57,26 +57,47 @@ const quickLinksGroups: QuickLinkGroup[] = [
   //     { to: '/insights/boycott', label: 'Boycott Analysis' },
   //   ],
   // },
+  // {
+  //   title: 'Customer',
+  //   links: [
+  //     { to: '/customer/segmentation', label: 'Customer Segmentation' },
+  //     { to: '/customer/360', label: 'Dashboard Customer 360' },
+  //     { to: '/customer/campaign', label: 'Campaign Dashboard' },
+  //   ],
+  // },
   {
-    title: 'Customer',
+    title: 'Human Capital Analytics',
     links: [
-      { to: '/customer/segmentation', label: 'Customer Segmentation' },
-      { to: '/customer/360', label: 'Dashboard Customer 360' },
-      { to: '/customer/campaign', label: 'Campaign Dashboard' },
-    ],
-  },
-  {
-    title: 'Operations',
-    links: [
-      { to: '/negotiation/supplier', label: 'Supplier Negotiation' },
       {
-        to: '/category/assortment-optimization',
-        label: 'Assortment Optimization',
+        label: 'Attendance Insights Tool',
+        href: 'https://app.powerbi.com/groups/e835c377-b2d3-4973-a731-e6c335974ce1/reports/2da20f91-bb31-438f-b51e-042ecb3d1f55/8498ecd4d81e73824814?experience=power-bi',
       },
-      { to: '/promotion', label: 'Pricing & Promotion' },
-      { to: '/sustainability', label: 'Sustainability' },
+      {
+        label: 'Store Management Productivity',
+        href: 'https://app.powerbi.com/groups/e835c377-b2d3-4973-a731-e6c335974ce1/reports/76a03310-2385-4078-b5d8-080847fd8325/ReportSectionce671adc32c8a83ba925?experience=power-bi',
+      },
+      {
+        label: 'Frontliner Productivity Tool',
+        href: 'https://app.powerbi.com/groups/e835c377-b2d3-4973-a731-e6c335974ce1/reports/6cb4f730-7271-437f-a14d-327d152d50d7/ReportSectionb5c9dce4dd4be24d4697?experience=power-bi',
+      },
+      {
+        label: 'Services Right Sizing Tool',
+        href: 'https://app.powerbi.com/groups/e835c377-b2d3-4973-a731-e6c335974ce1/reports/f5272372-d77b-4736-83f5-6d769d4b3360/81a46751b0226da963a2?experience=power-bi',
+      },
     ],
   },
+  // {
+  //   title: 'Operations',
+  //   links: [
+  //     { to: '/negotiation/supplier', label: 'Supplier Negotiation' },
+  //     {
+  //       to: '/category/assortment-optimization',
+  //       label: 'Assortment Optimization',
+  //     },
+  //     { to: '/promotion', label: 'Pricing & Promotion' },
+  //     { to: '/sustainability', label: 'Sustainability' },
+  //   ],
+  // },
 ];
 
 const Navbar = () => {
@@ -238,9 +259,14 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-            <NavLink to='/performance-tracking' className={navLinkClass}>
+            <a
+              href='/performance-tracking'
+              target='_blank'
+              rel='noreferrer'
+              className={`inline-flex min-h-11 items-center rounded-full px-5 py-2.5 text-sm font-semibold leading-none transition text-white/88 hover:bg-white/10 hover:text-white`}
+            >
               Performance Tracking
-            </NavLink>
+            </a>
             <NavLink to='/about' className={navLinkClass}>
               About Us
             </NavLink>
@@ -316,13 +342,15 @@ const Navbar = () => {
                 </div>
               </li>
               <li>
-                <NavLink
-                  to='/performance-tracking'
-                  className={navLinkClass}
+                <a
+                  href='/performance-tracking'
+                  target='_blank'
+                  rel='noreferrer'
+                  className={`block rounded-xl px-3 py-2.5 text-sm font-medium text-white/88 transition hover:bg-white/10 hover:text-white`}
                   onClick={closeMobileMenu}
                 >
                   Performance Tracking
-                </NavLink>
+                </a>
               </li>
               <li>
                 <NavLink

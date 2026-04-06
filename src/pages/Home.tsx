@@ -105,10 +105,10 @@ const Home: React.FC = () => {
       link: '/promotion',
     },
     {
-      icon: 'fa-leaf',
-      title: 'Sustainability',
-      description: 'Track and enhance sustainability metrics across operations',
-      link: '/sustainability',
+      icon: 'fa-users',
+      title: 'Human Capital Analytics',
+      description: 'Track and enhance human capital metrics across operations',
+      link: 'hr/analytics',
     },
   ];
 

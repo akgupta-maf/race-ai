@@ -14,6 +14,17 @@ export default defineConfig({
       '@styles': path.resolve(__dirname, './src/styles'),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        'performance-tracking': path.resolve(
+          __dirname,
+          'performance-tracking.html',
+        ),
+      },
+    },
+  },
   server: {
     port: 3000,
     open: true,
