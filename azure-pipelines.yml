@@ -20,6 +20,8 @@ jobs:
         clean: true
 
       - script: |
+          set -e
+          set -x
           echo "=== FE Deployment Started: $(date) ==="
 
           if [ "${{ parameters.BRANCH }}" = "dev" ]; then
