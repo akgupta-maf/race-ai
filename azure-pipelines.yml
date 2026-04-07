@@ -4,7 +4,7 @@ parameters:
   - name: BRANCH
     displayName: 'Branch'
     type: string
-    default: dev
+    default: prod
     values:
       - dev
       - prod
