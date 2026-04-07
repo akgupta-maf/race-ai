@@ -1,0 +1,46 @@
+trigger: none # manual trigger only, just like Jenkins "Build Now"
+
+parameters:
+  - name: BRANCH
+    displayName: 'Branch'
+    type: string
+    default: dev
+    values:
+      - dev
+      - prod
+
+pool:
+  name: vm-race-pool
+
+jobs:
+  - job: Deploy
+    displayName: 'FE Deployment - race_ai'
+    steps:
+      - checkout: self
+        clean: true
+
+      - script: |
+          echo "=== FE Deployment Started: $(date) ==="
+
+          if [ "${{ parameters.BRANCH }}" = "dev" ]; then
+            cp /app/apps/assortment/rationalization/fc_app/assortment_l_fc_dev/Dockerfile $(Build.SourcesDirectory)/
+            cp /app/apps/assortment/rationalization/fc_app/assortment_l_fc_dev/.env $(Build.SourcesDirectory)/
+            IMAGE_NAME="assortment_r_fc_dev_1"
+          else
+            cp /app/apps/race-ai/fc_app/race_ai/Dockerfile $(Build.SourcesDirectory)/
+            cp /app/apps/race-ai/fc_app/race_ai/.env $(Build.SourcesDirectory)/
+            IMAGE_NAME="race_ai_prod_7"
+          fi
+
+          OLD_CONTAINER=$(docker ps -q --filter "ancestor=$IMAGE_NAME")
+          if [ ! -z "$OLD_CONTAINER" ]; then
+            echo "Stopping old container: $OLD_CONTAINER"
+            docker stop $OLD_CONTAINER
+            docker rm $OLD_CONTAINER
+          fi
+
+          docker build -t $IMAGE_NAME $(Build.SourcesDirectory)
+          docker run --network=host -itd $IMAGE_NAME
+
+          echo "=== FE Deployment Done: $(date) ==="
+        displayName: 'Build & Deploy'
