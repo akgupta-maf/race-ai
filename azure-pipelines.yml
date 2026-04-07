@@ -20,7 +20,7 @@ jobs:
     displayName: 'FE Deployment - race_ai'
     steps:
       - checkout: self
-        clean: true
+        clean: 'true'
 
       - script: |
           COMMIT_MSG=$(git log -1 --pretty=%B)
