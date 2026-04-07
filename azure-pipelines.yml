@@ -1,5 +1,8 @@
-trigger: none # manual trigger only, just like Jenkins "Build Now"
-
+trigger:
+  branches:
+    include:
+      - dev
+      - prod
 parameters:
   - name: BRANCH
     displayName: 'Branch'
@@ -20,11 +23,34 @@ jobs:
         clean: true
 
       - script: |
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "Commit message: $COMMIT_MSG"
+
+          if [[ "$COMMIT_MSG" != deploy* ]]; then
+            echo "Skipping deployment — commit message does not start with 'deploy'"
+            echo "##vso[task.complete result=Skipped;]Skipped"
+            exit 0
+          fi
+
+          echo "Deploy keyword detected — proceeding..."
+        displayName: 'Check Commit Message'
+
+      - script: |
           set -e
           set -x
           echo "=== FE Deployment Started: $(date) ==="
 
-          if [ "${{ parameters.BRANCH }}" = "dev" ]; then
+          # Auto-detect branch from push, fallback to manual parameter
+          TRIGGER_BRANCH="${BUILD_SOURCEBRANCH##refs/heads/}"
+          if [ "$TRIGGER_BRANCH" = "dev" ] || [ "$TRIGGER_BRANCH" = "prod" ]; then
+            BRANCH="$TRIGGER_BRANCH"
+          else
+            BRANCH="${{ parameters.BRANCH }}"
+          fi
+
+          echo "Deploying branch: $BRANCH"
+
+          if [ "$BRANCH" = "dev" ]; then
             cp /app/apps/assortment/rationalization/fc_app/assortment_l_fc_dev/Dockerfile $(Build.SourcesDirectory)/
             cp /app/apps/assortment/rationalization/fc_app/assortment_l_fc_dev/.env $(Build.SourcesDirectory)/
             IMAGE_NAME="assortment_r_fc_dev_1"
