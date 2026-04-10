@@ -7,6 +7,7 @@ import ScrollToTop from './components/ScrollToTop';
 // Pages
 import About from './pages/About';
 import Contact from './pages/Contact';
+import DemandForecasting from './pages/DemandForecasting';
 import Home from './pages/Home';
 import Services from './pages/Services';
 
@@ -57,6 +58,7 @@ const App: React.FC = () => {
           <Route path='about' element={<About />} />
           <Route path='services' element={<Services />} />
           <Route path='contact' element={<Contact />} />
+          <Route path='demand-forecasting' element={<DemandForecasting />} />
 
           {/* Business Insights */}
           <Route path='insights/analysis' element={<InsightAnalysis />} />

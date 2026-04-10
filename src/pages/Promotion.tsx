@@ -10,6 +10,16 @@ type Benefit = {
   description: string;
 };
 
+type PromotionModule = {
+  title: string;
+  description: string;
+  image: string;
+  label: string;
+  icon: string;
+  iconClassName: string;
+  onClick: () => void;
+};
+
 const Promotion: React.FC = () => {
   const handlePromotionPlanningClick = (): void => {
     window.location.href =
@@ -71,6 +81,30 @@ const Promotion: React.FC = () => {
     {
       title: 'Improved Planning',
       description: 'Make data-driven promotion planning decisions',
+    },
+  ];
+
+  const modules: PromotionModule[] = [
+    {
+      title: 'Promotion Planning Dashboard',
+      description:
+        'Design, schedule, and monitor promotional events with complete campaign visibility across teams and timelines.',
+      image: '/img/promotions_dashboard.png',
+      label: 'Planning',
+      icon: 'fa-chart-pie',
+      iconClassName: 'bg-(--color-primary-20) text-xl text-(--color-primary)',
+      onClick: handlePromotionPlanningClick,
+    },
+    {
+      title: 'Price Optimization Dashboard',
+      description:
+        'Analyze KVI pricing behavior and optimize strategy with focused pricing insights built for faster commercial action.',
+      image: '/img/project-1.jpg',
+      label: 'Optimization',
+      icon: 'fa-tag',
+      iconClassName:
+        'bg-(--color-secondary-20) text-xl text-(--color-secondary)',
+      onClick: handlePriceOptimizationClick,
     },
   ];
 
@@ -259,60 +293,62 @@ const Promotion: React.FC = () => {
               title='Launch Pricing Tools Instantly'
               description='Jump directly into your planning and optimization dashboards from one place.'
             />
-            <div className='grid gap-6 lg:grid-cols-2'>
-              <div>
-                <article className='flex h-full flex-col rounded-xl border border-(--color-primary-20) bg-white p-8 shadow-[0_8px_18px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]'>
-                  <div className='mb-4 flex items-center justify-between'>
-                    <div className='inline-flex h-12 w-12 items-center justify-center rounded-lg bg-(--color-primary-20) text-xl text-(--color-primary)'>
-                      <i className='fas fa-chart-pie'></i>
+            <div className='flex flex-col gap-6'>
+              {modules.map((module, index) => (
+                <motion.article
+                  key={module.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                  viewport={{ once: true }}
+                  className='w-full overflow-hidden rounded-2xl border border-(--color-primary-20) bg-white shadow-[0_8px_18px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]'
+                >
+                  <div className='grid grid-cols-1 gap-0 md:grid-cols-12'>
+                    <div className='h-full w-full p-4 md:col-span-5'>
+                      <img
+                        src={assetPath(module.image)}
+                        alt={module.title}
+                        className='h-full min-h-56 w-full rounded-xl object-cover'
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = assetPath('/img/project-1.jpg');
+                        }}
+                      />
                     </div>
-                    <span className='rounded-full bg-(--color-primary-20) px-3 py-1 text-xs font-bold uppercase tracking-widest text-(--color-primary-80)'>
-                      Planning
-                    </span>
-                  </div>
-                  <h3 className='mb-2 text-2xl font-bold text-(--color-primary)'>
-                    Promotion Planning Dashboard
-                  </h3>
-                  <p className='mb-6 leading-7 text-(--color-typography-secondary)'>
-                    Design, schedule, and monitor promotional events with
-                    complete campaign visibility.
-                  </p>
-                  <button
-                    type='button'
-                    className='mt-auto w-fit rounded-lg bg-(--color-primary) px-5 py-2.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-(--color-primary-80)'
-                    onClick={handlePromotionPlanningClick}
-                  >
-                    Open Dashboard
-                  </button>
-                </article>
-              </div>
 
-              <div>
-                <article className='flex h-full flex-col rounded-xl border border-(--color-primary-20) bg-white p-8 shadow-[0_8px_18px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]'>
-                  <div className='mb-4 flex items-center justify-between'>
-                    <div className='inline-flex h-12 w-12 items-center justify-center rounded-lg bg-(--color-secondary-20) text-xl text-(--color-secondary)'>
-                      <i className='fas fa-tag'></i>
+                    <div className='flex h-full flex-col justify-between p-6 md:col-span-7 md:p-8'>
+                      <div>
+                        <div className='mb-4 flex items-center justify-between gap-4'>
+                          <div
+                            className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${module.iconClassName}`}
+                          >
+                            <i className={`fas ${module.icon}`}></i>
+                          </div>
+                          <span className='rounded-full bg-(--color-primary-20) px-3 py-1 text-xs font-bold uppercase tracking-widest text-(--color-primary-80)'>
+                            {module.label}
+                          </span>
+                        </div>
+                        <h3 className='mb-3 text-2xl font-bold text-(--color-primary)'>
+                          {module.title}
+                        </h3>
+                        <p className='text-base leading-7 text-(--color-typography-secondary)'>
+                          {module.description}
+                        </p>
+                      </div>
+
+                      <div className='mt-6'>
+                        <button
+                          type='button'
+                          className='inline-flex items-center justify-center rounded-xl bg-(--color-primary) px-6 py-3 text-sm font-semibold text-white transition hover:bg-(--color-primary-80)'
+                          onClick={module.onClick}
+                        >
+                          Open Dashboard
+                        </button>
+                      </div>
                     </div>
-                    <span className='rounded-full bg-(--color-primary-20) px-3 py-1 text-xs font-bold uppercase tracking-widest text-(--color-primary-80)'>
-                      Optimization
-                    </span>
                   </div>
-                  <h3 className='mb-2 text-2xl font-bold text-(--color-primary)'>
-                    Price Optimization Dashboard
-                  </h3>
-                  <p className='mb-6 leading-7 text-(--color-typography-secondary)'>
-                    Analyze KVI pricing behavior and optimize strategy with
-                    advanced pricing insights.
-                  </p>
-                  <button
-                    type='button'
-                    className='mt-auto w-fit rounded-lg bg-(--color-primary) px-5 py-2.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-(--color-primary-80)'
-                    onClick={handlePriceOptimizationClick}
-                  >
-                    Open Dashboard
-                  </button>
-                </article>
-              </div>
+                </motion.article>
+              ))}
             </div>
           </div>
         </section>

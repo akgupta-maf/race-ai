@@ -52,53 +52,51 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section className='section'>
-        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
-          <div className='grid gap-10 lg:grid-cols-12'>
-            {/* Contact Info */}
-            <motion.div
-              className='lg:col-span-4'
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-            >
-              <h3 className='mb-4'>Get In Touch</h3>
-
-              <div className='mb-4'>
-                <div className='flex items-start gap-3'>
-                  <div>
-                    <i className='fas fa-map-marker-alt text-3xl text-(--color-primary)'></i>
-                  </div>
-                  <div>
-                    <h5>Office Location</h5>
-                    <p className='text-(--color-typography-secondary)'>
-                      MAF Carrefour
-                      <br />
-                      United Arab Emirates
-                    </p>
-                  </div>
+      <section className='flex justify-center py-16 w-full'>
+        {/* Contact Info */}
+        <motion.div
+          className='mx-auto max-w-xl text-center lg:col-span-4'
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+        >
+          <h3 className='mb-4'>Get In Touch</h3>
+          <div className='flex flex-row gap-16 mt-10'>
+            <div className='mb-4'>
+              <div className='flex items-start justify-center gap-3 text-left'>
+                <div>
+                  <i className='fas fa-map-marker-alt text-3xl text-(--color-primary)'></i>
+                </div>
+                <div>
+                  <h5>Office Location</h5>
+                  <p className='text-(--color-typography-secondary)'>
+                    MAF Carrefour
+                    <br />
+                    United Arab Emirates
+                  </p>
                 </div>
               </div>
-
-              <div className='mb-4'>
-                <div className='flex items-start gap-3'>
-                  <div>
-                    <i className='fas fa-envelope text-3xl text-(--color-primary)'></i>
-                  </div>
-                  <div>
-                    <h5>Email Us</h5>
-                    <p className='text-(--color-typography-secondary)'>
-                      <a
-                        href='mailto:race@mafcarrefour.com'
-                        className='text-(--color-typography-secondary) hover:text-(--color-primary)'
-                      >
-                        race@mafcarrefour.com
-                      </a>
-                    </p>
-                  </div>
+            </div>
+            <div className='mb-4'>
+              <div className='flex items-start justify-center gap-3 text-left'>
+                <div>
+                  <i className='fas fa-envelope text-3xl text-(--color-primary)'></i>
+                </div>
+                <div>
+                  <h5>Email Us</h5>
+                  <p className='text-(--color-typography-secondary)'>
+                    <a
+                      href='mailto:race@maf.ae'
+                      className='text-(--color-typography-secondary) hover:text-(--color-primary)'
+                    >
+                      race@maf.ae
+                    </a>
+                  </p>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div className='mb-4'>
+          {/* <div className='mb-4'>
                 <div className='flex items-start gap-3'>
                   <div>
                     <i className='fas fa-phone text-3xl text-(--color-primary)'></i>
@@ -110,9 +108,9 @@ const Contact: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div>
+          {/* <div>
                 <h5 className='mb-3'>Follow Us</h5>
                 <div className='flex gap-2'>
                   <a
@@ -144,11 +142,11 @@ const Contact: React.FC = () => {
                     <i className='fab fa-instagram'></i>
                   </a>
                 </div>
-              </div>
-            </motion.div>
+              </div> */}
+        </motion.div>
 
-            {/* Contact Form */}
-            <motion.div
+        {/* Contact Form */}
+        {/* <motion.div
               className='lg:col-span-8'
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -240,9 +238,7 @@ const Contact: React.FC = () => {
                   </div>
                 </form>
               </div>
-            </motion.div>
-          </div>
-        </div>
+            </motion.div> */}
       </section>
     </>
   );

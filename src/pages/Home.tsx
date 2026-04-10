@@ -86,10 +86,11 @@ const Home: React.FC = () => {
       link: '/customer/segmentation',
     },
     {
-      icon: 'fa-handshake',
-      title: 'Negotiation Analytics',
-      description: 'Optimize supplier negotiations with data-backed insights',
-      link: '/negotiation/supplier',
+      icon: 'fa-chart-area',
+      title: 'Demand Forecasting',
+      description:
+        'Improve forecast accuracy and replenishment decisions with AI-driven planning.',
+      link: '/demand-forecasting',
     },
     {
       icon: 'fa-tags',
@@ -246,7 +247,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className='home-metrics section flex justify-center items-center'>
+      {/* <section className='home-metrics section flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='grid gap-6 md:grid-cols-2 xl:grid-cols-4'>
             {stats.map((metric, index) => (
@@ -258,7 +259,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section
         className='section home-solutions flex justify-center items-center'
@@ -305,7 +306,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className='section home-platform  flex justify-center items-center'>
+      {/* <section className='section home-platform  flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
           <div className='section-title home-section-title'>
             <h2>Retail Intelligence Platform</h2>
@@ -332,7 +333,7 @@ const Home: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className='section home-why flex justify-center items-center'>
         <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
