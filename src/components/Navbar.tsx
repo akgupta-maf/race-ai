@@ -204,7 +204,7 @@ const Navbar = () => {
                 }`}
                 onClick={() => setIsQuickLinksOpen((prev) => !prev)}
               >
-                Quick Links
+                Dashboard Quick Links
                 <i
                   className={`fas fa-chevron-down text-xs transition ${isQuickLinksOpen ? 'rotate-180' : ''}`}
                 />

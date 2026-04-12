@@ -1,37 +1,36 @@
+import PageTemplate from '@/components/PageTemplate';
 import { assetPath } from '@/utils/assetPath';
 import { motion } from 'framer-motion';
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
-import './Promotion.css';
-
-type Benefit = {
-  title: string;
-  description: string;
-};
 
 type PromotionModule = {
   title: string;
   description: string;
   image: string;
-  label: string;
+  dashboardLink: string;
   icon: string;
-  iconClassName: string;
-  onClick: () => void;
 };
 
-const Promotion: React.FC = () => {
-  const handlePromotionPlanningClick = (): void => {
-    window.location.href =
-      'https://pnp.retailsso.com/promotions/dashboards/main';
-  };
+const modules: PromotionModule[] = [
+  {
+    title: 'Promotion Planning Dashboard',
+    description:
+      'Design, schedule, and monitor promotional events with complete campaign visibility across teams and timelines.',
+    image: '/img/promo_dashboard.png',
+    dashboardLink: 'https://pnp.retailsso.com/promotions/dashboards/main',
+    icon: 'fa-chart-pie',
+  },
+  {
+    title: 'Price Optimization Dashboard',
+    description:
+      'Analyze KVI pricing behavior and optimize strategy with focused pricing insights built for faster commercial action.',
+    image: '/img/pricing_dashboard.png',
+    dashboardLink:
+      'https://pnp.mafcarrefour.local/pricing/dashboard/pricing-kvi',
+    icon: 'fa-tag',
+  },
+];
 
-  const handlePriceOptimizationClick = (): void => {
-    window.location.href =
-      'https://pnp.mafcarrefour.local/pricing/dashboard/pricing-kvi';
-  };
-
-  /* ─── data ─────────────────────────────────────────────── */
+const Promotion = () => {
   const features = [
     {
       icon: 'fa-percent',
@@ -65,321 +64,93 @@ const Promotion: React.FC = () => {
     },
   ];
 
-  const benefits: Benefit[] = [
+  const benefits = [
     {
       title: 'Higher ROI',
-      description: 'Maximize return on promotional investments',
+      description: 'Maximize return on promotional investments.',
     },
     {
       title: 'Better Targeting',
-      description: 'Target the right customers with the right offers',
+      description: 'Target the right customers with the right offers.',
     },
     {
       title: 'Reduced Cannibalization',
-      description: 'Minimize negative impacts on regular sales',
+      description: 'Minimize negative impacts on regular sales.',
     },
     {
       title: 'Improved Planning',
-      description: 'Make data-driven promotion planning decisions',
+      description: 'Make data-driven promotion planning decisions.',
     },
   ];
-
-  const modules: PromotionModule[] = [
-    {
-      title: 'Promotion Planning Dashboard',
-      description:
-        'Design, schedule, and monitor promotional events with complete campaign visibility across teams and timelines.',
-      image: '/img/promotions_dashboard.png',
-      label: 'Planning',
-      icon: 'fa-chart-pie',
-      iconClassName: 'bg-(--color-primary-20) text-xl text-(--color-primary)',
-      onClick: handlePromotionPlanningClick,
-    },
-    {
-      title: 'Price Optimization Dashboard',
-      description:
-        'Analyze KVI pricing behavior and optimize strategy with focused pricing insights built for faster commercial action.',
-      image: '/img/project-1.jpg',
-      label: 'Optimization',
-      icon: 'fa-tag',
-      iconClassName:
-        'bg-(--color-secondary-20) text-xl text-(--color-secondary)',
-      onClick: handlePriceOptimizationClick,
-    },
-  ];
-
-  const SectionHeader: React.FC<{ title: string; description: string }> = ({
-    title,
-    description,
-  }) => (
-    <div className='mb-14 text-center'>
-      <h2 className='mb-3 text-3xl font-bold text-(--color-primary) md:text-4xl'>
-        {title}
-      </h2>
-      <p className='mx-auto max-w-3xl text-base leading-7 text-(--color-typography-secondary)'>
-        {description}
-      </p>
-    </div>
-  );
 
   return (
-    <>
-      <Helmet>
-        <title>Pricing & Promotion Effectiveness | RACE.AI</title>
-        <meta
-          name='description'
-          content='Optimize promotional strategy with data-driven insights'
-        />
-      </Helmet>
-
-      <main>
-        <section
-          className='py-24 text-white md:py-28'
-          style={{
-            background:
-              'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-80) 55%, var(--color-secondary) 100%)',
-          }}
-        >
-          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
-            <motion.div
-              className='mx-auto max-w-4xl text-center'
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h1 className='mb-4 text-4xl font-extrabold tracking-tight md:text-6xl'>
-                Pricing & Promotion Effectiveness
-              </h1>
-              <p className='mx-auto mb-7 max-w-3xl text-lg leading-8 text-white/85'>
-                Optimize promotion planning and pricing intelligence with a
-                single, data-driven workflow designed for enterprise retail
-                teams.
-              </p>
-              <div className='flex flex-wrap items-center justify-center gap-3'>
-                <button
-                  type='button'
-                  className='rounded-xl border border-white bg-white px-6 py-3 text-base font-semibold text-(--color-primary) shadow-sm transition hover:bg-(--color-secondary-20)'
-                  onClick={handlePromotionPlanningClick}
-                >
-                  Explore Promotion Planning
-                </button>
-                <button
-                  type='button'
-                  className='rounded-xl border border-white/50 bg-white/10 px-6 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/20'
-                  onClick={handlePriceOptimizationClick}
-                >
-                  View Optimization Dashboard
-                </button>
-              </div>
-            </motion.div>
+    <PageTemplate
+      title='Pricing & Promotion Effectiveness'
+      subtitle='One Integrated Suite for Promotion & Pricing Intelligence'
+      description='Plan, execute, and measure pricing and promotional campaigns for higher ROI. Align pricing depth, promotional strategy, and customer response in one integrated analytics framework designed for enterprise retail teams.'
+      image='/img/pnp_hero.webp'
+      features={features}
+      benefits={benefits}
+    >
+      <section className='section bg-light'>
+        <div className='mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='section-title'>
+            <h2>Pricing & Promotion Modules</h2>
+            <p>Explore each module and open its dedicated dashboard.</p>
           </div>
-        </section>
 
-        <section className='py-20 md:py-24'>
-          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
-            <div className='grid items-center gap-8 grid-cols-12'>
-              <motion.div
-                className='w-full col-span-7'
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+          <div className='flex flex-col gap-6'>
+            {modules.map((module, index) => (
+              <motion.article
+                key={module.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
                 viewport={{ once: true }}
+                className='w-full overflow-hidden rounded-2xl border border-(--color-primary-20) bg-white shadow-sm'
               >
-                <img
-                  src={assetPath('/img/promotions_dashboard.png')}
-                  alt='Pricing and Promotion Analytics'
-                  className='max-h-105 w-full rounded-xl object-cover shadow-[0_12px_30px_rgba(49,37,28,0.12)]'
-                />
-              </motion.div>
-              <motion.div
-                className='w-full col-span-5'
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <SectionHeader
-                  title='Overview'
-                  description='Our Pricing & Promotion Effectiveness solution helps you plan, execute, and measure campaigns for higher ROI and stronger pricing decisions across categories.'
-                />
-                <p className='max-w-xl text-base leading-8 text-(--color-typography)'>
-                  From campaign design to post-promotion analysis, teams can
-                  align pricing, promotional depth, and customer response in one
-                  integrated analytics framework.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
+                <div className='grid gap-0 grid-cols-12'>
+                  <div className='h-full w-full p-4 col-span-5'>
+                    <img
+                      src={assetPath(module.image)}
+                      alt={module.title}
+                      className='h-full min-h-56 w-full rounded-xl object-cover'
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = assetPath('/img/project-1.jpg');
+                      }}
+                    />
+                  </div>
 
-        <section className='bg-(--color-surface-bg) py-20 md:py-24'>
-          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
-            <SectionHeader
-              title='Key Features'
-              description='Powerful capabilities for promotion optimization and pricing intelligence'
-            />
-            <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  className='w-full'
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  <article className='flex h-full flex-col gap-3 rounded-xl border border-(--color-primary-20) bg-white p-7 shadow-[0_6px_16px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_14px_26px_rgba(15,23,42,0.12)]'>
-                    <div className='inline-flex h-12 w-12 items-center justify-center rounded-lg bg-(--color-primary-20) text-xl text-(--color-primary)'>
-                      <i className={`fas ${feature.icon}`}></i>
-                    </div>
-                    <h3 className='m-0 text-lg font-bold text-(--color-primary)'>
-                      {feature.title}
-                    </h3>
-                    <p className='m-0 leading-7 text-(--color-typography-secondary)'>
-                      {feature.description}
-                    </p>
-                  </article>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className='py-20 md:py-24'>
-          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
-            <SectionHeader
-              title='Benefits'
-              description='How this solution creates measurable business impact'
-            />
-            <div className='grid gap-6 lg:grid-cols-2'>
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={benefit.title}
-                  className='w-full'
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.06 }}
-                  viewport={{ once: true }}
-                >
-                  <div className='flex items-start gap-3 px-1 py-4'>
-                    <span
-                      className='mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-(--color-success-20) text-xs text-(--color-success)'
-                      aria-hidden='true'
-                    >
-                      <i className='fas fa-check'></i>
-                    </span>
+                  <div className='flex h-full flex-col justify-between p-4 col-span-7'>
                     <div>
-                      <h4 className='mb-1 text-lg font-bold text-(--color-primary)'>
-                        {benefit.title}
-                      </h4>
-                      <p className='m-0 leading-7 text-(--color-typography-secondary)'>
-                        {benefit.description}
+                      <div className='mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-(--color-secondary-20) text-(--color-primary)'>
+                        <i className={`fas ${module.icon} text-xl`}></i>
+                      </div>
+                      <h3 className='mb-3 text-2xl font-bold text-(--color-primary)'>
+                        {module.title}
+                      </h3>
+                      <p className='text-base leading-7 text-(--color-typography)'>
+                        {module.description}
                       </p>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        <section
-          className='py-20 md:py-24'
-          style={{
-            background:
-              'linear-gradient(180deg, #fff 0%, var(--color-secondary-20) 100%)',
-          }}
-        >
-          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
-            <SectionHeader
-              title='Launch Pricing Tools Instantly'
-              description='Jump directly into your planning and optimization dashboards from one place.'
-            />
-            <div className='flex flex-col gap-6'>
-              {modules.map((module, index) => (
-                <motion.article
-                  key={module.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.08 }}
-                  viewport={{ once: true }}
-                  className='w-full overflow-hidden rounded-2xl border border-(--color-primary-20) bg-white shadow-[0_8px_18px_rgba(15,23,42,0.08)] transition hover:-translate-y-1 hover:shadow-[0_16px_30px_rgba(15,23,42,0.12)]'
-                >
-                  <div className='grid grid-cols-1 gap-0 md:grid-cols-12'>
-                    <div className='h-full w-full p-4 md:col-span-5'>
-                      <img
-                        src={assetPath(module.image)}
-                        alt={module.title}
-                        className='h-full min-h-56 w-full rounded-xl object-cover'
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = assetPath('/img/project-1.jpg');
-                        }}
-                      />
-                    </div>
-
-                    <div className='flex h-full flex-col justify-between p-6 md:col-span-7 md:p-8'>
-                      <div>
-                        <div className='mb-4 flex items-center justify-between gap-4'>
-                          <div
-                            className={`inline-flex h-12 w-12 items-center justify-center rounded-xl ${module.iconClassName}`}
-                          >
-                            <i className={`fas ${module.icon}`}></i>
-                          </div>
-                          <span className='rounded-full bg-(--color-primary-20) px-3 py-1 text-xs font-bold uppercase tracking-widest text-(--color-primary-80)'>
-                            {module.label}
-                          </span>
-                        </div>
-                        <h3 className='mb-3 text-2xl font-bold text-(--color-primary)'>
-                          {module.title}
-                        </h3>
-                        <p className='text-base leading-7 text-(--color-typography-secondary)'>
-                          {module.description}
-                        </p>
-                      </div>
-
-                      <div className='mt-6'>
-                        <button
-                          type='button'
-                          className='inline-flex items-center justify-center rounded-xl bg-(--color-primary) px-6 py-3 text-sm font-semibold text-white transition hover:bg-(--color-primary-80)'
-                          onClick={module.onClick}
-                        >
-                          Open Dashboard
-                        </button>
-                      </div>
+                    <div className='mt-6'>
+                      <a
+                        href={module.dashboardLink}
+                        className='inline-flex items-center justify-center rounded-xl bg-(--color-primary) px-6 py-3 text-sm font-semibold text-white transition hover:bg-(--color-primary-80)'
+                      >
+                        Open {module.title}
+                      </a>
                     </div>
                   </div>
-                </motion.article>
-              ))}
-            </div>
+                </div>
+              </motion.article>
+            ))}
           </div>
-        </section>
-
-        <section
-          className='py-20 md:py-24'
-          style={{
-            background:
-              'linear-gradient(135deg, var(--color-primary) 0%, var(--color-burgundy) 100%)',
-          }}
-        >
-          <div className='mx-auto w-full max-w-310 px-4 sm:px-6 lg:px-8'>
-            <div className='mx-auto max-w-3xl text-center'>
-              <h3 className='mb-3 text-4xl font-bold text-white'>
-                Ready to Get Started?
-              </h3>
-              <p className='mb-6 text-lg text-white/85'>
-                Contact us today to learn how Promotion Optimization can
-                accelerate your retail performance.
-              </p>
-              <Link
-                to='/contact'
-                className='inline-flex rounded-xl bg-white px-6 py-3 text-base font-semibold text-(--color-primary) transition hover:bg-(--color-secondary-20)'
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-        </section>
-      </main>
-    </>
+        </div>
+      </section>
+    </PageTemplate>
   );
 };
 

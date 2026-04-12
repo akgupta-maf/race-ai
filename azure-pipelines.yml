@@ -18,6 +18,8 @@ pool:
 jobs:
   - job: Deploy
     displayName: 'FE Deployment - race_ai'
+    variables:
+      DEPLOY_REQUESTED: 'false'
     steps:
       - checkout: self
         clean: 'true'
@@ -26,13 +28,13 @@ jobs:
           COMMIT_MSG=$(git log -1 --pretty=%B)
           echo "Commit message: $COMMIT_MSG"
 
-          if [[ "$COMMIT_MSG" != deploy* ]]; then
+          if [[ "$COMMIT_MSG" == deploy* ]]; then
+            echo "Deploy keyword detected — proceeding..."
+            echo "##vso[task.setvariable variable=DEPLOY_REQUESTED]true"
+          else
             echo "Skipping deployment — commit message does not start with 'deploy'"
-            echo "##vso[task.complete result=Skipped;]Skipped"
-            exit 0
+            echo "##vso[task.setvariable variable=DEPLOY_REQUESTED]false"
           fi
-
-          echo "Deploy keyword detected — proceeding..."
         displayName: 'Check Commit Message'
 
       - script: |
@@ -72,3 +74,4 @@ jobs:
 
           echo "=== FE Deployment Done: $(date) ==="
         displayName: 'Build & Deploy'
+        condition: and(succeeded(), eq(variables['DEPLOY_REQUESTED'], 'true'))
