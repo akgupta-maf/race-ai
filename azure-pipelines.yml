@@ -25,15 +25,22 @@ jobs:
         clean: 'true'
 
       - script: |
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-          echo "Commit message: $COMMIT_MSG"
+          echo "Build reason: $(Build.Reason)"
 
-          if [[ "$COMMIT_MSG" == deploy* ]]; then
-            echo "Deploy keyword detected — proceeding..."
+          if [ "$(Build.Reason)" = "Manual" ]; then
+            echo "Manual trigger detected — skipping commit message check, proceeding with deployment..."
             echo "##vso[task.setvariable variable=DEPLOY_REQUESTED]true"
           else
-            echo "Skipping deployment — commit message does not start with 'deploy'"
-            echo "##vso[task.setvariable variable=DEPLOY_REQUESTED]false"
+            COMMIT_MSG=$(git log -1 --pretty=%B)
+            echo "Commit message: $COMMIT_MSG"
+
+            if [[ "$COMMIT_MSG" == deploy* ]]; then
+              echo "Deploy keyword detected — proceeding..."
+              echo "##vso[task.setvariable variable=DEPLOY_REQUESTED]true"
+            else
+              echo "Skipping deployment — commit message does not start with 'deploy'"
+              echo "##vso[task.setvariable variable=DEPLOY_REQUESTED]false"
+            fi
           fi
         displayName: 'Check Commit Message'
 
