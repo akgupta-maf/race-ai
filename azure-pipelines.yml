@@ -3,6 +3,7 @@ trigger:
     include:
       - dev
       - prod
+
 parameters:
   - name: BRANCH
     displayName: 'Branch'
@@ -20,6 +21,17 @@ jobs:
     displayName: 'FE Deployment - race_ai'
     variables:
       DEPLOY_REQUESTED: 'false'
+    strategy:
+      matrix:
+        Primary:
+          AGENT_NAME: 'vm-race-un-p-01' # 👈 your primary agent name
+        Backup:
+          AGENT_NAME: 'vm-race-un-p-02' # 👈 your backup agent name (update this)
+    pool:
+      name: vm-race-pool
+      demands:
+        - Agent.Name -equals $(AGENT_NAME) # pins each matrix leg to its VM
+
     steps:
       - checkout: self
         clean: 'true'
@@ -47,9 +59,8 @@ jobs:
       - script: |
           set -e
           set -x
-          echo "=== FE Deployment Started: $(date) ==="
+          echo "=== FE Deployment Started on $(AGENT_NAME): $(date) ==="
 
-          # Auto-detect branch from push, fallback to manual parameter
           TRIGGER_BRANCH="${BUILD_SOURCEBRANCH##refs/heads/}"
           if [ "$TRIGGER_BRANCH" = "dev" ] || [ "$TRIGGER_BRANCH" = "prod" ]; then
             BRANCH="$TRIGGER_BRANCH"
@@ -57,7 +68,7 @@ jobs:
             BRANCH="${{ parameters.BRANCH }}"
           fi
 
-          echo "Deploying branch: $BRANCH"
+          echo "Deploying branch: $BRANCH on agent: $(AGENT_NAME)"
 
           if [ "$BRANCH" = "dev" ]; then
             cp /app/apps/assortment/rationalization/fc_app/assortment_l_fc_dev/Dockerfile $(Build.SourcesDirectory)/
@@ -79,6 +90,6 @@ jobs:
           docker build -t $IMAGE_NAME $(Build.SourcesDirectory)
           docker run --network=host -itd $IMAGE_NAME
 
-          echo "=== FE Deployment Done: $(date) ==="
+          echo "=== FE Deployment Done on $(AGENT_NAME): $(date) ==="
         displayName: 'Build & Deploy'
         condition: and(succeeded(), eq(variables['DEPLOY_REQUESTED'], 'true'))
