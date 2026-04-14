@@ -26,7 +26,7 @@ jobs:
         Primary:
           AGENT_NAME: 'vm-race-un-p-01' # 👈 your primary agent name
         Backup:
-          AGENT_NAME: 'vm-race-un-p-02' # 👈 your backup agent name (update this)
+          AGENT_NAME: 'vm-race-un-p-01-bck' # 👈 your backup agent name (update this)
     pool:
       name: vm-race-pool
       demands:
