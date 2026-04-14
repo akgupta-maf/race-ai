@@ -35,32 +35,38 @@ const Promotion = () => {
     {
       icon: 'fa-percent',
       title: 'Promotion Planning',
-      description: 'Plan and schedule promotions for maximum impact.',
+      description:
+        'End-to-end event planning powered by AI-driven item recommendations, built-in seasonality and elasticity, competitor intelligence, and margin-optimized volume simulations to design high-impact, data-backed promotions.',
     },
     {
-      icon: 'fa-chart-bar',
-      title: 'Effectiveness Measurement',
-      description: 'Measure ROI and effectiveness of each campaign.',
+      icon: 'fa-bolt',
+      title: 'Quick Forecast (New)',
+      description:
+        'Instant promotion volume forecasting and price simulation for any custom item list, enabling rapid scenario testing and on-the-fly promotion decisions.',
     },
     {
       icon: 'fa-money-bill-wave',
-      title: 'Price Optimization',
-      description: 'Optimize pricing strategies across categories.',
-    },
-    {
-      icon: 'fa-users',
-      title: 'Customer Response',
-      description: 'Analyze how customers respond to different offers.',
-    },
-    {
-      icon: 'fa-lightbulb',
-      title: 'Recommendation Engine',
-      description: 'AI-powered suggestions for your next promotion.',
+      title: 'Promotion Effectiveness',
+      description:
+        'Executive view of promotion effectiveness, highlighting sales uplift, customer reach, halo effects, and ROI, clearly showing what worked, what did not, and why, across departments, promo types, and time periods.',
     },
     {
       icon: 'fa-history',
-      title: 'Historical Analysis',
-      description: 'Learn from past promotion performance trends.',
+      title: 'Historical Event Deep Dive',
+      description:
+        'In-depth analysis of past events with period-on-period comparison, item-level performance insights, financial effectiveness, and operational efficiency, supported by built-in performance segmentation.',
+    },
+    {
+      icon: 'fa-tags',
+      title: 'Price Optimization',
+      description:
+        'Science-based KVI, KCI, and Background item recommendations to strengthen price perception by investing in the products that matter most to customers, while protecting margins on background items.',
+    },
+    {
+      icon: 'fa-globe',
+      title: 'Price Intelligence',
+      description:
+        'Daily refreshed competitor price intelligence covering 10k+ items across major competitors and markets, providing a clear and consistent view of price index positioning.',
     },
   ];
 
