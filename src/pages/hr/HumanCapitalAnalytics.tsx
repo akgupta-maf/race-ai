@@ -128,7 +128,7 @@ const HumanCapitalAnalytics = () => {
                 key={tool.title}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.08 }}
+                transition={{ delay: index * 0.09 }}
                 viewport={{ once: true }}
                 className='w-full overflow-hidden rounded-2xl border border-(--color-primary-20) bg-white shadow-sm'
               >
