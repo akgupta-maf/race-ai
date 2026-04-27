@@ -30,6 +30,6 @@ export default defineConfig({
     open: true,
   },
   preview: {
-    allowedHosts: ['pnp.mafcarrefour.local'],
+    allowedHosts: ['raceai.mafcarrefour.local'],
   },
 });
